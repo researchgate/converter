@@ -27,7 +27,7 @@ http://bibliophile.sourceforge.net
 
 class PARSECREATORS
 {
-	function PARSECREATORS()
+	function __construct()
 	{
 	}
 /* Create writer arrays from bibtex input.
