@@ -522,5 +522,3 @@ class PARSEENTRIES
 		return array($this->preamble, $this->strings, $this->entries, $this->undefinedStrings);
 	}
 }
-?>
-
