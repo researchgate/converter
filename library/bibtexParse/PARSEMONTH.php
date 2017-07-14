@@ -26,7 +26,7 @@ http://bibliophile.sourceforge.net
 class PARSEMONTH
 {
 // Constructor
-	function PARSEMONTH()
+	function __construct()
 	{
 	}
 	function init($monthField)
