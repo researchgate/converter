@@ -74,14 +74,18 @@ class Creator implements CreatorInterface
                 'SE'    => 'getVersion',
                 'ST'    => 'getTitleShort',
                 'RP'    => 'getReprintEdition',
-                'KW'    => 'getKeyword'
+                'KW'    => 'getKeyword',
+            );
+
+            $articleFields = array(
+                'JO'    => 'getJournal',
             );
 
             $identical  =   array(
                 'T1'    =>  array('TI', 'CT'),
                 'PY'    =>  array('Y1')
             );
-            
+
             foreach ($data as $entry) {
                 /** @var $entry \Geissler\Converter\Model\Entry */
                 $record =   array();
@@ -129,6 +133,18 @@ class Creator implements CreatorInterface
 
                 // field
                 foreach ($fields as $field => $getter) {
+                    $value  =   $entry->$getter();
+                    if ($value !== null) {
+                        if (is_array($value) == true) {
+                            $record[$field] =   $value;
+                        } else {
+                            $record[$field] =   array($value);
+                        }
+                    }
+                }
+
+                // articleFields
+                foreach ($articleFields as $field => $getter) {
                     $value  =   $entry->$getter();
                     if ($value !== null) {
                         if (is_array($value) == true) {
