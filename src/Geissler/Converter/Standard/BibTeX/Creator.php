@@ -46,7 +46,7 @@ class Creator implements CreatorInterface
             'journal'           =>  'getJournal',
             'shorttitle'        =>  'getTitleShort',
             'keywords'          =>  'getKeyword',
-            'LCCN'              =>  'getCallNumber'
+            'LCCN'              =>  'getCallNumber',
             'doi'               =>  'getDoi',
         );
 
