@@ -47,6 +47,7 @@ class Creator implements CreatorInterface
             'shorttitle'        =>  'getTitleShort',
             'keywords'          =>  'getKeyword',
             'LCCN'              =>  'getCallNumber'
+            'doi'               =>  'getDoi',
         );
 
         foreach ($data as $entry) {
