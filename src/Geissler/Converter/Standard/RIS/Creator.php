@@ -218,6 +218,7 @@ class Creator implements CreatorInterface
                 return 'CASE';
             case 'chapter':
                 return 'CHAP';
+            case 'article':
             case 'articleJournal':
                 return 'JOUR';
             case 'catalog':
