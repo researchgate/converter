@@ -14,12 +14,11 @@ before_script:
 
 script:
   - pyrus install http://phptal.org/latest.tar.gz
-  - pear install pear/PHP_CodeSniffer 
+  - pear install pear/PHP_CodeSniffer
   - phpenv rehash
   - phpcs --standard=PSR2 src
   - phpunit --coverage-text --bootstrap tests/bootstrap.php tests/
 
 notifications:
-  email:
-    - benjamin.geissler@gmail.com
+  email: false
 
