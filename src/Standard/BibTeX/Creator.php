@@ -16,7 +16,7 @@ use Geissler\Converter\Model\Entry;
 class Creator implements CreatorInterface
 {
     /** @var array */
-    private $bibTeX =[];
+    private $bibTeX = [];
     /** @var string */
     private $lineBreak = "\r\n";
 
