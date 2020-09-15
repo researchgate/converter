@@ -6,11 +6,10 @@ php:
 
 before_script:
   - composer install
+  - pyrus install http://phptal.org/latest.tar.gz
+  - phpenv rehash
 
 script:
-  - pyrus install http://phptal.org/latest.tar.gz
-  - pear install pear/PHP_CodeSniffer
-  - phpenv rehash
   - phpcs --standard=PSR12 src
   - phpunit --coverage-text --bootstrap tests/bootstrap.php tests/
 
