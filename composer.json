@@ -23,8 +23,8 @@
         "phpunit/phpunit": "^9.3"
     },
     "autoload":{
-        "psr-0":{
-            "Geissler": "src/"
+        "psr-4":{
+            "Geissler\\Converter\\": "src/"
         },
         "files": [
             "library/bibtexParse/PARSEENTRIES.php",
