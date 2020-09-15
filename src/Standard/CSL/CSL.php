@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\CSL;
 
 use Geissler\Converter\Standard\Basic\StandardAbstract;

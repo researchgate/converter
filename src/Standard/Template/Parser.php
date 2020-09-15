@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\Template;
 
 use Geissler\Converter\Interfaces\ParserInterface;

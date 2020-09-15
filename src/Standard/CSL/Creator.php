@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\CSL;
 
 use Geissler\Converter\Interfaces\CreatorInterface;
@@ -74,8 +75,7 @@ class Creator implements CreatorInterface
                 // pages
                 if ($entry->getPages()->getRange() !== null) {
                     $record['page'] =   $entry->getPages()->getRange();
-                } elseif ($entry->getPages()->getStart() !== null
-                    && $entry->getPages()->getEnd() !== null) {
+                } elseif ($entry->getPages()->getStart() !== null && $entry->getPages()->getEnd() !== null) {
                     $record['page'] =   $entry->getPages()->getStart() . '-' . $entry->getPages()->getEnd();
                 } elseif ($entry->getPages()->getStart() !== null) {
                     $record['page'] =   $entry->getPages()->getStart();
@@ -134,14 +134,10 @@ class Creator implements CreatorInterface
 
                 foreach ($fields as $field => $getter) {
                     $value  =   $entry->$getter();
-                    if ($value != ''
-                        && $value !== null
-                        && (
-                            (is_array($value) == true
-                                && count($value) > 0)
-                            || is_array($value) == false
-                            )
-                        ) {
+                    if (
+                        $value != '' && $value !== null
+                        && ((is_array($value) == true && count($value) > 0) || is_array($value) == false)
+                    ) {
                         $record[$field] =   $value;
                     }
                 }
@@ -162,8 +158,7 @@ class Creator implements CreatorInterface
      */
     public function retrieve()
     {
-        if (isset($this->data) == true
-            && count($this->data) > 0) {
+        if (isset($this->data) == true && count($this->data) > 0) {
             return json_encode($this->data);
         }
 

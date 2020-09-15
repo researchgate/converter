@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\BibTeX;
 
 use Geissler\Converter\Interfaces\CreatorInterface;
@@ -88,8 +89,7 @@ class Creator implements CreatorInterface
             // pages
             if ($entry->getPages()->getRange() !== null) {
                 $data[] =   'pages = {' . $entry->getPages()->getRange() . '}';
-            } elseif ($entry->getPages()->getStart() !== null
-                && $entry->getPages()->getEnd() !== null) {
+            } elseif ($entry->getPages()->getStart() !== null && $entry->getPages()->getEnd() !== null) {
                 $data[] =   'pages = {' . $entry->getPages()->getStart() . '-' . $entry->getPages()->getEnd() . '}';
             } elseif ($entry->getPages()->getStart() !== null) {
                 $data[] =   'pages = {' . $entry->getPages()->getStart() . '}';
@@ -127,8 +127,7 @@ class Creator implements CreatorInterface
      */
     public function retrieve()
     {
-        if (isset($this->bibTeX) == true
-            && count($this->bibTeX) > 0) {
+        if (isset($this->bibTeX) == true && count($this->bibTeX) > 0) {
             return implode($this->lineBreak . $this->lineBreak, $this->bibTeX);
         }
 

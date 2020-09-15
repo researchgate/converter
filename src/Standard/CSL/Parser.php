@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\CSL;
 
 use Geissler\Converter\Interfaces\ParserInterface;
@@ -245,8 +246,7 @@ class Parser implements ParserInterface
                 $date->setYear($data['year']);
             }
 
-            if (isset($data[1]) == true
-                || isset($data['month']) == true) {
+            if (isset($data[1]) == true || isset($data['month']) == true) {
                 $month  =   isset($data['month']) == true ? $data['month'] : $data[1];
 
                 if (in_array($month, array(1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12)) == true) {

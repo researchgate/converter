@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\BibTeX;
 
 use Geissler\Converter\Interfaces\ParserInterface;
@@ -85,9 +86,11 @@ class Parser implements ParserInterface
                 $bibTeX[$i]['month']   =   $date->init($bibTeX[$i]['month']);
             }
 
-            if (isset($bibTeX[$i]['pages']) == true
+            if (
+                isset($bibTeX[$i]['pages']) == true
                 && $bibTeX[$i]['pages'] != ''
-                && preg_match('/^[0-9]+$/', $bibTeX[$i]['pages']) == 0) {
+                && preg_match('/^[0-9]+$/', $bibTeX[$i]['pages']) == 0
+            ) {
                 $bibTeX[$i]['pages']   =   $page->init($bibTeX[$i]['pages']);
             }
         }
@@ -233,8 +236,7 @@ class Parser implements ParserInterface
             );
 
             foreach ($mapper as $key => $method) {
-                if (isset($data[$i][$key]) == true
-                    && $data[$i][$key] != '') {
+                if (isset($data[$i][$key]) == true && $data[$i][$key] != '') {
                     $entry->$method($data[$i][$key]);
                 }
             }

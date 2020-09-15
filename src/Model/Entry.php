@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Model;
 
 use Geissler\Converter\Model\Persons;

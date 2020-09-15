@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter;
 
 use Geissler\Converter\Interfaces\FormattingStandard;

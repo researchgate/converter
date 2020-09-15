@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\RIS;
 
 use Geissler\Converter\Interfaces\CreatorInterface;
@@ -119,8 +120,7 @@ class Creator implements CreatorInterface
                 // pages
                 if ($entry->getPages()->getRange() !== null) {
                     $record['SP']   =   array($entry->getPages()->getRange());
-                } elseif ($entry->getPages()->getStart() !== null
-                    && $entry->getPages()->getEnd() !== null) {
+                } elseif ($entry->getPages()->getStart() !== null && $entry->getPages()->getEnd() !== null) {
                     $record['SP']   =   array($entry->getPages()->getStart());
                     $record['EP']   =   array($entry->getPages()->getEnd());
                 } elseif ($entry->getPages()->getStart() !== null) {
@@ -160,13 +160,11 @@ class Creator implements CreatorInterface
                     if (isset($record[$main][0]) == true) {
                         $value  =   $record[$main][0];
                         foreach ($secondary as $secondaryField) {
-                            if (isset($record[$secondaryField][0]) == true
-                                && $record[$secondaryField][0] == $value) {
+                            if (isset($record[$secondaryField][0]) == true && $record[$secondaryField][0] == $value) {
                                 unset($record[$secondaryField][0]);
                             }
                         }
                     }
-
                 }
 
                 $this->data[]   =   $record;
@@ -185,8 +183,7 @@ class Creator implements CreatorInterface
      */
     public function retrieve()
     {
-        if (isset($this->data) == true
-            && count($this->data) > 0) {
+        if (isset($this->data) == true && count($this->data) > 0) {
             $writer =   new RISWriter();
 
             return $writer->writeRecords($this->data);
@@ -272,8 +269,7 @@ class Creator implements CreatorInterface
 
         $return =   $date->getYear();
 
-        if ($date->getDay() !== null
-            && $date->getMonth() !== null) {
+        if ($date->getDay() !== null && $date->getMonth() !== null) {
             $return .=  '/' . $date->getMonth() . '/' . $date->getDay();
         } elseif ($date->getMonth() !== null) {
             $return .=  '/' . $date->getMonth();

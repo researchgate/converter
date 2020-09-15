@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Interfaces;
 
 use Geissler\Converter\Model\Entries;

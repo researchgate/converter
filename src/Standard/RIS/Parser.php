@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\RIS;
 
 use Geissler\Converter\Interfaces\ParserInterface;
@@ -31,8 +32,7 @@ class Parser implements ParserInterface
         $reader->parseString($data);
         $records    =   $reader->getRecords();
 
-        if (is_array($records) === true
-            && count($records) > 0) {
+        if (is_array($records) === true && count($records) > 0) {
             $this->entries  =   new Entries();
 
             $authors    =   array(
@@ -118,8 +118,7 @@ class Parser implements ParserInterface
 
                 // fields
                 foreach ($fields as $field => $setter) {
-                    if (isset($record[$field][0]) == true
-                        && $record[$field][0] != '') {
+                    if (isset($record[$field][0]) == true && $record[$field][0] != '') {
                         $entry->$setter($record[$field][0]);
                     }
                 }

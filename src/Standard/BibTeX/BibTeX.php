@@ -1,4 +1,5 @@
 <?php
+
 namespace Geissler\Converter\Standard\BibTeX;
 
 use Geissler\Converter\Standard\Basic\StandardAbstract;
