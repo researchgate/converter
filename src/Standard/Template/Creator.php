@@ -23,6 +23,7 @@ class Creator implements CreatorInterface
     public function create(Entries $data)
     {
         // TODO: Implement create() method.
+        return false;
     }
 
     /**
@@ -33,5 +34,6 @@ class Creator implements CreatorInterface
     public function retrieve()
     {
         // TODO: Implement retrieve() method.
+        return false;
     }
 }

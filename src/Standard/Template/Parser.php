@@ -2,6 +2,7 @@
 
 namespace Geissler\Converter\Standard\Template;
 
+use ErrorException;
 use Geissler\Converter\Interfaces\ParserInterface;
 use Geissler\Converter\Model\Entries;
 use Geissler\Converter\Model\Entry;
@@ -25,17 +26,17 @@ class Parser implements ParserInterface
     public function parse($data)
     {
         // TODO: Implement parse() method.
+        return false;
     }
 
     /**
      * Retrieve the \Geissler\Converter\Model\Entries object containing the parsed data.
-     *
-     * @throws \ErrorException when no entries object is set.
      *
      * @return \Geissler\Converter\Model\Entries
      */
     public function retrieve()
     {
         // TODO: Implement retrieve() method.
+        throw new ErrorException('Implement this method.');
     }
 }

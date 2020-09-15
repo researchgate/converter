@@ -75,7 +75,7 @@ abstract class StandardAbstract implements FormattingStandard
      * standard.
      *
      * @param \Geissler\Converter\Model\Entries $data
-     * @return string
+     * @return string|bool
      */
     public function create(Entries $data)
     {

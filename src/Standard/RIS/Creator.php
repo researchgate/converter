@@ -267,7 +267,7 @@ class Creator implements CreatorInterface
             return null;
         }
 
-        $return =   $date->getYear();
+        $return = (string) $date->getYear();
 
         if ($date->getDay() !== null && $date->getMonth() !== null) {
             $return .=  '/' . $date->getMonth() . '/' . $date->getDay();

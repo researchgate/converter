@@ -132,16 +132,18 @@ END;
 
 class PARSEENTRIES
 {
-	function __construct()
-	{
-		$this->preamble = $this->strings = $this->undefinedStrings = $this->entries = array();
-		$this->count = 0;
-		$this->fieldExtract = TRUE;
-		$this->removeDelimit = TRUE;
-		$this->expandMacro = FALSE;
-		$this->parseFile = TRUE;
-		$this->outsideEntry = TRUE;
-	}
+    public $preamble = [];
+    public $strings = [];
+    public $undefinedStrings = [];
+    public $entries = [];
+
+    public $count = 0;
+
+    public $fieldExtract = true;
+    public $removeDelimit = true;
+    public $expandMacro = false;
+    public $parseFile = true;
+
 // Open bib file
 	function openBib($file)
 	{
