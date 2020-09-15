@@ -10,7 +10,7 @@ namespace Geissler\Converter\Model;
  */
 class Date
 {
-    /** @var integer */
+    /** @var integer|null */
     private $year;
     /** @var string|integer */
     private $month;
@@ -40,7 +40,7 @@ class Date
     /**
      * Day.
      *
-     * @return int|string
+     * @return int|string|null
      */
     public function getDay()
     {
@@ -105,7 +105,7 @@ class Date
 
     /**
      * Month.
-     * @return int|string
+     * @return int|string|null
      */
     public function getMonth()
     {
@@ -128,7 +128,7 @@ class Date
     /**
      * Name of a season.
      *
-     * @return string
+     * @return string|null
      */
     public function getSeason()
     {
@@ -150,7 +150,7 @@ class Date
     /**
      * Second.
      *
-     * @return int
+     * @return int|null
      */
     public function getSecond()
     {
@@ -160,7 +160,7 @@ class Date
     /**
      * Year.
      *
-     * @param int $year
+     * @param int|null $year
      * @return \Geissler\Converter\Model\Date
      */
     public function setYear($year)
@@ -172,7 +172,7 @@ class Date
     /**
      * Year.
      *
-     * @return int
+     * @return int|null
      */
     public function getYear()
     {

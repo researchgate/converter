@@ -19,6 +19,11 @@ class Parser implements ParserInterface
     /** @var \Geissler\Converter\Model\Entries */
     private $entries;
 
+    public function __construct()
+    {
+        $this->entries = new Entries();
+    }
+
     /**
      * Transfer the data from a standard into a \Geissler\Converter\Model\Entries object.
      *
@@ -45,7 +50,7 @@ class Parser implements ParserInterface
      */
     public function retrieve()
     {
-        if (isset($this->entries) == true) {
+        if ($this->entries->count() > 0) {
             return $this->entries;
         }
 
@@ -103,10 +108,8 @@ class Parser implements ParserInterface
      *
      * @param array $data
      */
-    private function create(array $data)
+    private function create(array $data): void
     {
-        $this->entries  =   new Entries();
-
         $length =   count($data);
         for ($i = 0; $i < $length; $i++) {
             $entry  =   new Entry();

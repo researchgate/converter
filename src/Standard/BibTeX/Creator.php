@@ -16,7 +16,7 @@ use Geissler\Converter\Model\Entry;
 class Creator implements CreatorInterface
 {
     /** @var array */
-    private $bibTeX;
+    private $bibTeX =[];
     /** @var string */
     private $lineBreak = "\r\n";
 
@@ -28,8 +28,6 @@ class Creator implements CreatorInterface
      */
     public function create(Entries $data)
     {
-        $this->bibTeX   =   array();
-
         $mapper =   array(
             'title'             =>  'getTitle',
             'volume'            =>  'getVolume',
@@ -52,7 +50,7 @@ class Creator implements CreatorInterface
         );
 
         foreach ($data as $entry) {
-            /** @var $entry \Geissler\Converter\Model\Entry */
+            /** @var \Geissler\Converter\Model\Entry $entry */
             $data   =   array();
             $data[] =   $this->init($entry);
 
@@ -76,7 +74,7 @@ class Creator implements CreatorInterface
 
             // use issued date for year and month
             foreach ($entry->getIssued() as $date) {
-                /** @var $date \Geissler\Converter\Model\Date */
+                /** @var \Geissler\Converter\Model\Date $date */
                 if ($date->getYear() != '') {
                     $data[] =   'year = {' . $date->getYear() . '}';
                 }
@@ -198,7 +196,7 @@ class Creator implements CreatorInterface
         $return =   array();
 
         foreach ($persons as $person) {
-            /** @var $person \Geissler\Converter\Model\Person */
+            /** @var \Geissler\Converter\Model\Person $person */
             $name   =   implode(
                 ' ',
                 array(

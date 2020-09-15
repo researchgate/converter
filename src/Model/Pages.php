@@ -35,7 +35,7 @@ class Pages
     /**
      * Last page of a page range.
      *
-     * @return int
+     * @return int|null
      */
     public function getEnd()
     {
@@ -58,7 +58,7 @@ class Pages
     /**
      * A page range.
      *
-     * @return string
+     * @return string|null
      */
     public function getRange()
     {
@@ -81,7 +81,7 @@ class Pages
     /**
      * First page of a page range.
      *
-     * @return int
+     * @return int|null
      */
     public function getStart()
     {
@@ -104,7 +104,7 @@ class Pages
     /**
      * Total number of pages.
      *
-     * @return int
+     * @return int|null
      */
     public function getTotal()
     {

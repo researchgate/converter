@@ -16,7 +16,7 @@ use Geissler\Converter\Model\Dates;
 class Creator implements CreatorInterface
 {
     /** @var array */
-    private $data;
+    private $data = [];
 
     /**
      * Create entries based on the given standard from the \Geissler\Converter\Model\Entries object.
@@ -27,10 +27,8 @@ class Creator implements CreatorInterface
     public function create(Entries $data)
     {
         if (count($data) > 0) {
-            $this->data =   array();
-
             foreach ($data as $entry) {
-                /** @var $entry \Geissler\Converter\Model\Entry */
+                /** @var \Geissler\Converter\Model\Entry $entry */
                 $record =   array();
 
                 $record['type'] =   $this->getType($entry->getType()->getType());
@@ -249,7 +247,7 @@ class Creator implements CreatorInterface
         $data   =   array();
 
         foreach ($dates as $date) {
-            /** @var $date \Geissler\Converter\Model\Date */
+            /** @var \Geissler\Converter\Model\Date $date */
             $entry  =   array();
             if ($date->getYear() !== null) {
                 $entry['year']  =   $date->getYear();

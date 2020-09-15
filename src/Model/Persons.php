@@ -2,9 +2,6 @@
 
 namespace Geissler\Converter\Model;
 
-use Geissler\Converter\Model\Container;
-use Geissler\Converter\Model\Person;
-
 /**
  * Group of Person objects as "array" object.
  *
@@ -13,13 +10,7 @@ use Geissler\Converter\Model\Person;
  */
 class Persons extends Container
 {
-    /**
-     * Add a person object.
-     *
-     * @param Person $person
-     * @return Persons
-     */
-    public function setPerson(Person $person)
+    public function setPerson(Person $person): Container
     {
         return $this->setData($person);
     }

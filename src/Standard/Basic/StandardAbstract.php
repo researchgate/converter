@@ -75,12 +75,16 @@ abstract class StandardAbstract implements FormattingStandard
      * standard.
      *
      * @param \Geissler\Converter\Model\Entries $data
-     * @return string|bool
+     * @return string
      */
     public function create(Entries $data)
     {
         if ($this->getCreator()->create($data) == true) {
-            return $this->getCreator()->retrieve();
+            $output = $this->getCreator()->retrieve();
+
+            if (is_string($output)) {
+                return $output;
+            }
         }
 
         return '';

@@ -2,6 +2,7 @@
 
 namespace Geissler\Converter\Standard\RIS;
 
+use ErrorException;
 use Geissler\Converter\Interfaces\ParserInterface;
 use Geissler\Converter\Model\Entries;
 use Geissler\Converter\Model\Entry;
@@ -19,6 +20,11 @@ class Parser implements ParserInterface
 {
     /** @var \Geissler\Converter\Model\Entries */
     private $entries;
+
+    public function __construct()
+    {
+        $this->entries = new Entries();
+    }
 
     /**
      * Transfer the data from a standard into a \Geissler\Converter\Model\Entries object.
@@ -135,17 +141,17 @@ class Parser implements ParserInterface
     /**
      * Retrieve the \Geissler\Converter\Model\Entries object containing the parsed data.
      *
-     * @throws \ErrorException when no entries object is set.
+     * @throws ErrorException when no entries object is set.
      *
      * @return \Geissler\Converter\Model\Entries
      */
     public function retrieve()
     {
-        if (isset($this->entries) == true) {
+        if ($this->entries->count() > 0) {
             return $this->entries;
         }
 
-        throw new \ErrorException('No entries object created!');
+        throw new ErrorException('No entries object created!');
     }
 
     /**
@@ -254,16 +260,16 @@ class Parser implements ParserInterface
         $date   =   new Date();
 
         if (preg_match('/^([0-9]){4}$/', $data) == 1) {
-            $date->setYear($data);
+            $date->setYear((int)$data);
         } elseif (preg_match('/^([0-9]{4})\/([0-9][0-9])\/([0-9][0-9])$/', $data, $match) == 1) {
             $date
-                ->setYear($match[1])
-                ->setMonth($match[2])
-                ->setDay($match[3]);
+                ->setYear((int)$match[1])
+                ->setMonth((int)$match[2])
+                ->setDay((int)$match[3]);
         } elseif (preg_match('/^([0-9]{4})\/([0-9][0-9])\/\/$/', $data, $match) == 1) {
             $date
-                ->setYear($match[1])
-                ->setMonth($match[2]);
+                ->setYear((int) $match[1])
+                ->setMonth((int) $match[2]);
         }
 
         return $date;

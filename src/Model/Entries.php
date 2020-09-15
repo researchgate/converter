@@ -2,9 +2,6 @@
 
 namespace Geissler\Converter\Model;
 
-use Geissler\Converter\Model\Container;
-use Geissler\Converter\Model\Entry;
-
 /**
  * Group of literature entries as "array"-object.
  *
@@ -13,13 +10,7 @@ use Geissler\Converter\Model\Entry;
  */
 class Entries extends Container
 {
-    /**
-     * Add a new literature entry.
-     *
-     * @param Entry $entry
-     * @return Entries
-     */
-    public function setEntry(Entry $entry)
+    public function setEntry(Entry $entry): Container
     {
         return $this->setData($entry);
     }

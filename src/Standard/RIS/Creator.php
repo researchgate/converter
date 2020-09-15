@@ -18,7 +18,7 @@ use LibRIS\RISWriter;
 class Creator implements CreatorInterface
 {
     /** @var array */
-    private $data;
+    private $data = [];
 
     /**
      * Create entries based on the given standard from the \Geissler\Converter\Model\Entries object.
@@ -29,8 +29,6 @@ class Creator implements CreatorInterface
     public function create(Entries $data)
     {
         if (count($data) > 0) {
-            $this->data =   array();
-
             $authors    =   array(
                 //'A1'    =>  'getAuthor',
                 'A2'    =>  'getEditor',
@@ -88,7 +86,7 @@ class Creator implements CreatorInterface
             );
 
             foreach ($data as $entry) {
-                /** @var $entry \Geissler\Converter\Model\Entry */
+                /** @var \Geissler\Converter\Model\Entry $entry */
                 $record =   array();
 
                 // type
@@ -98,8 +96,9 @@ class Creator implements CreatorInterface
                 foreach ($authors as $field => $method) {
                     if (count($entry->$method()) > 0) {
                         $record[$field] =   array();
+
                         foreach ($entry->$method() as $person) {
-                            /** @var $person \Geissler\Converter\Model\Person */
+                            /** @var \Geissler\Converter\Model\Person $person */
                             $record[$field][]   =   $this->getPerson($person);
                         }
                     }

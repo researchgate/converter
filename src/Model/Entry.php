@@ -580,7 +580,7 @@ class Entry
      *      author = {Ross Taylor, Lily},
      *      title = {{Local Cults in Etruria}},
      *
-     * @return string
+     * @return string|null
      */
     public function getCitationLabel()
     {

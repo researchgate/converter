@@ -2,6 +2,7 @@
 
 namespace Geissler\Converter\Standard\CSL;
 
+use ErrorException;
 use Geissler\Converter\Interfaces\ParserInterface;
 use Geissler\Converter\Model\Entries;
 use Geissler\Converter\Model\Entry;
@@ -18,8 +19,13 @@ class Parser implements ParserInterface
 {
     /** @var \Geissler\Converter\Model\Entries */
     private $entries;
-    /** @var \Geissler\Converter\Model\Entry */
-    private $entry;
+    /** @var \Geissler\Converter\Model\Entry|null */
+    private $entry = null;
+
+    public function __construct()
+    {
+        $this->entries = new Entries();
+    }
 
     /**
      * Transfer the csl input data into a \Geissler\Converter\Model\Entries object.
@@ -32,7 +38,6 @@ class Parser implements ParserInterface
         $json   =   json_decode($data, true);
 
         if (is_array($json) == true) {
-            $this->entries  =   new Entries();
             $types  =   array(
                 'article'                   =>  'setArticle',
                 'article-magazine'          =>  'setArticleMagazine',
@@ -187,26 +192,26 @@ class Parser implements ParserInterface
     /**
      * Retrieve the \Geissler\Converter\Model\Entries object containing the parsed data.
      *
-     * @throws \ErrorException when no entries object is set.
+     * @throws ErrorException when no entries object is set.
      *
      * @return \Geissler\Converter\Model\Entries
      */
     public function retrieve()
     {
-        if (isset($this->entries) == true) {
+        if ($this->entries->count() > 0) {
             return $this->entries;
         }
 
-        throw new \ErrorException('No entries object created!');
+        throw new ErrorException('No entries object created!');
     }
 
     /**
      * Create a person object for each csl person and inject it via the given getter-method.
      *
      * @param array $persons
-     * @param       $method
+     * @param string $method
      */
-    private function createPerson(array $persons, $method)
+    private function createPerson(array $persons, string $method): void
     {
         $mapper =   array(
             'family'                =>  'setFamily',
@@ -233,9 +238,9 @@ class Parser implements ParserInterface
      * Create a date object for each csl date and inject it via the given getter-method.
      *
      * @param array $dates
-     * @param       $method
+     * @param string $method
      */
-    private function createDate(array $dates, $method)
+    private function createDate(array $dates, string $method): void
     {
         foreach ($dates['date-parts'] as $data) {
             $date   =   new Date();
