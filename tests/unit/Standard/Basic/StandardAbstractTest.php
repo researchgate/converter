@@ -1,6 +1,7 @@
 <?php
 namespace Geissler\Converter\Standard\Basic;
 
+use ErrorException;
 use PHPUnit\Framework\TestCase;
 
 class StandardMock extends StandardAbstract
@@ -40,7 +41,7 @@ class StandardAbstractTest extends TestCase
      */
     public function testParse()
     {
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->object->parse('');
     }
 
@@ -49,7 +50,7 @@ class StandardAbstractTest extends TestCase
      */
     public function testRetrieve()
     {
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->object->retrieve();
     }
 
@@ -58,7 +59,7 @@ class StandardAbstractTest extends TestCase
      */
     public function testGetCreator()
     {
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->object->getCreator();
     }
 
@@ -67,7 +68,7 @@ class StandardAbstractTest extends TestCase
      */
     public function testGetParser()
     {
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->object->getParser();
     }
 }

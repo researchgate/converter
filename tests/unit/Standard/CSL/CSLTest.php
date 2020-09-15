@@ -37,7 +37,7 @@ class CSLTest extends TestCase
     {
         $this->assertTrue($this->object->parse($input));
         $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->retrieve());
-        $this->assertInternalType('array', json_decode($this->object->create($this->object->retrieve())));
+        $this->assertIsArray(json_decode($this->object->create($this->object->retrieve())));
     }
 
     public function dataProviderParse()

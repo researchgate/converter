@@ -1,6 +1,7 @@
 <?php
 namespace Geissler\Converter\Model;
 
+use ErrorException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -69,7 +70,7 @@ class EntriesTest extends TestCase
      */
     public function testDoNotSetNoneEntry()
     {
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->object[] =   true;
     }
 

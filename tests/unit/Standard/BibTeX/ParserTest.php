@@ -1,6 +1,7 @@
 <?php
 namespace Geissler\Converter\Standard\BibTeX;
 
+use ErrorException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -330,7 +331,7 @@ class ParserTest extends TestCase
     public function testParseNot()
     {
         $this->assertFalse($this->object->parse(''));
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->object->retrieve();
     }
 }

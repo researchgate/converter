@@ -1,6 +1,7 @@
 <?php
 namespace Geissler\Converter\Standard\CSL;
 
+use ErrorException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -214,7 +215,7 @@ class ParserTest extends TestCase
      */
     public function testDoNotRetrieve()
     {
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->assertFalse($this->object->parse(''));
         $this->object->retrieve();
     }

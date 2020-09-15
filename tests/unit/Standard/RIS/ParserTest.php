@@ -1,6 +1,7 @@
 <?php
 namespace Geissler\Converter\Standard\RIS;
 
+use ErrorException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -502,7 +503,7 @@ ER  -',
     public function testRetrieve()
     {
         $this->assertFalse($this->object->parse(''));
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->object->retrieve();
     }
 }

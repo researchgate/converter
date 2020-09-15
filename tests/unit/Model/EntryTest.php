@@ -481,7 +481,7 @@ class EntryTest extends TestCase
         $this->assertInstanceOf($this->class, $this->object->setKeyword('test'));
         $this->assertInstanceOf($this->class, $this->object->setKeyword('tmp'));
         $this->assertInstanceOf($this->class, $this->object->setKeyword('1'));
-        $this->assertInternalType('array', $this->object->getKeyword());
+        $this->assertIsArray($this->object->getKeyword());
         $this->assertContains('test', $this->object->getKeyword());
         $this->assertContains('tmp', $this->object->getKeyword());
     }

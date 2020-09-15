@@ -1,6 +1,7 @@
 <?php
 namespace Geissler\Converter\Standard\BibTeX;
 
+use ErrorException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -89,7 +90,7 @@ booktitle = {The title of the book}
     {
         $this->assertFalse($this->object->parse());
         $this->assertEquals('', $this->object->create(new \Geissler\Converter\Model\Entries()));
-        $this->setExpectedException('ErrorException');
+        $this->expectException(ErrorException::class);
         $this->object->retrieve();
     }
 }
