@@ -1,8 +1,11 @@
 <?php
+
 namespace Geissler\Converter\Standard\RIS;
 
+use Geissler\Converter\Model\Date;
 use Geissler\Converter\Model\Entries;
 use Geissler\Converter\Model\Entry;
+use LibRIS\RISReader;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,20 +14,6 @@ use PHPUnit\Framework\TestCase;
 class CreatorTest extends TestCase
 {
     /**
-     * @var Creator
-     */
-    protected $object;
-
-    /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
-     */
-    protected function setUp(): void
-    {
-        $this->object = new Creator;
-    }
-
-    /**
      * @covers Geissler\Converter\Standard\RIS\Creator::create
      * @covers Geissler\Converter\Standard\RIS\Creator::getPerson
      * @covers Geissler\Converter\Standard\RIS\Creator::getDate
@@ -32,18 +21,23 @@ class CreatorTest extends TestCase
      * @covers Geissler\Converter\Standard\RIS\Creator::retrieve
      * @dataProvider dataProviderCreate
      */
-    public function testCreate($input, $output)
+    public function testCreate(string $input, string $output)
     {
+        $input = str_replace(PHP_EOL, RISReader::RIS_EOL, $input);
+        $output = str_replace(PHP_EOL, RISReader::RIS_EOL, $output);
+
+        $creator = new Creator();
         $parser =   new Parser();
+
         $this->assertTrue($parser->parse($input));
-        $this->assertTrue($this->object->create($parser->retrieve()));
-        $this->assertEquals($output, $this->object->retrieve());
+        $this->assertTrue($creator->create($parser->retrieve()));
+        $this->assertEquals($output, $creator->retrieve());
     }
 
     public function dataProviderCreate()
     {
-        return array(
-            array(
+        return [
+            [
                 'TY  - CHAP
 AU  - Franks,L.M.
 TI  - Preface by an AIDS Victim
@@ -77,8 +71,8 @@ DO  - DOI: 10.xxxxxxxxx
 KW  - HIV
 KW  - AIDS
 ER  - '
-            ),
-            array(
+            ],
+            [
                 'TY  - JOUR
 A1  - Kellum, B
 
@@ -270,8 +264,8 @@ ER  - ' . '
 TY  - BOOK
 AU  - Kellum, B
 ER  - '
-            ),
-            array(
+            ],
+            [
                 'TY  - THES
 A1  - Rieger, Anna-Katharina, Jr
 T1  - Heiligtümer in Ostia
@@ -305,8 +299,8 @@ KW  - Religion
 KW  - Spes
 KW  - Venus
 ER  - '
-            ),
-            array(
+            ],
+            [
                 'TY  - JOUR
 A1  - Kockel, Valentin
 T1  - Funde und Forschungen in den Vesuvstädten II
@@ -336,8 +330,8 @@ VL  - 22
 KW  - Pompeji
 KW  - Religion
 ER  - '
-            )
-        );
+            ],
+        ];
     }
 
     /**
@@ -346,8 +340,10 @@ ER  - '
      */
     public function testGetDate()
     {
-        $entry  =   new \Geissler\Converter\Model\Entry();
-        $date   =   new \Geissler\Converter\Model\Date();
+        $creator = new Creator();
+
+        $entry  =   new Entry();
+        $date   =   new Date();
         $date
             ->setYear(1984)
             ->setMonth(1)
@@ -355,51 +351,85 @@ ER  - '
             ->setSeason('Winter');
         $entry->getIssued()->setDate($date);
         $entry->getPages()->setEnd(123);
-        $nextDate   =   new \Geissler\Converter\Model\Date();
+        $nextDate   =   new Date();
         $nextDate->setYear(1984)->setSeason('summer');
         $entry->getAccessed()->setDate($nextDate);
         $entry->getType()->setBook();
         $entries    =   new \Geissler\Converter\Model\Entries();
         $entries->setEntry($entry);
 
-        $noYear =   new \Geissler\Converter\Model\Entry();
+        $noYear =   new Entry();
         $noYear->getType()->setBook();
         $noYear->setTitle('No Year');
-        $noYearDate =   new \Geissler\Converter\Model\Date();
+        $noYearDate =   new Date();
         $noYearDate->setDay(19);
         $noYear->getIssued()->setDate($noYearDate);
         $entries->setEntry($noYear);
 
-        $this->assertTrue($this->object->create($entries));
-        $this->assertEquals('TY  - BOOK
+        $this->assertTrue($creator->create($entries));
+        $expectedOutput = <<<RIS
+TY  - BOOK
 PY  - 1984/1/19/Winter
 Y2  - 1984///summer
 EP  - 123
-ER  - ' . '
+ER  - 
 TY  - BOOK
 T1  - No Year
-ER  - ', $this->object->retrieve());
+ER  - 
+RIS;
+        // Fix line endings
+        $expectedOutput = str_replace(PHP_EOL, RISReader::RIS_EOL, $expectedOutput);
+
+        $this->assertEquals($expectedOutput, $creator->retrieve());
     }
 
     /**
-     * @covers Geissler\Converter\Standard\RIS\Creator::create
-     * @covers Geissler\Converter\Standard\RIS\Creator::retrieve
+     * @covers Creator::create
      */
-    public function testRetrieve()
+    public function testCreateReturnsFalseWhenEntryListIsEmpty(): void
     {
-        $this->assertFalse($this->object->create(new \Geissler\Converter\Model\Entries()));
-        $this->assertFalse($this->object->retrieve());
+        $creator = new Creator();
+        $emptyEntryList = new Entries();
+        $this->assertFalse($creator->create($emptyEntryList));
     }
 
-    public function testArticleType()
+    /**
+     * @covers Creator::create
+     */
+    public function testCreateReturnsTrueWhenEntryListIsNotEmpty(): void
     {
+        $creator = new Creator();
         $entry = new Entry();
         $entry->getType()->setArticle();
 
         $entries = new Entries();
         $entries->setEntry($entry);;
 
-        $this->assertTrue($this->object->create($entries));
-        $this->assertStringStartsWith('TY  - JOUR', $this->object->retrieve());
+        $this->assertTrue($creator->create($entries));
+    }
+
+    /**
+     * @covers Creator::create
+     */
+    public function testArticleEntryCreation()
+    {
+        $creator = new Creator();
+        $entry = new Entry();
+        $entry->getType()->setArticle();
+
+        $entries = new Entries();
+        $entries->setEntry($entry);;
+
+        $creator->create($entries);
+        $this->assertStringStartsWith('TY  - JOUR', $creator->retrieve());
+    }
+
+    /**
+     * @covers Creator::retrieve
+     */
+    public function testRetrieveReturnsFalseWhenEntryListIsEmpty(): void
+    {
+        $creator = new Creator();
+        $this->assertFalse($creator->retrieve());
     }
 }
