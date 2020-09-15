@@ -1,5 +1,6 @@
 ## Converter
-[![Build Status](https://travis-ci.com/researchgate/converter.svg?branch=master)](https://travis-ci.com/researchgate/converter)
+
+[![Build Status](https://travis-ci.com/researchgate/converter.svg?branch=main)](https://travis-ci.com/researchgate/converter)
 
 **Forked from [geissler/converter](https://github.com/geissler/converter).** Thank you for your amazing contributions 🙏.
 
@@ -8,20 +9,23 @@ At the moment are supported [BibTeX](http://en.wikipedia.org/wiki/BibTeX "BibTeX
 [CSL](http://citationstyles.org/ "CSL") and [RIS](http://en.wikipedia.org/wiki/RIS_\(file_format\) "RIS").
 
 ## Installation
+
 ### Via [composer](http://getcomposer.org/ "composer")
-Add to the `composer.json` the `require` key and run composer install.
+
+Just require the `researchgate/converter` package as below:
+
 ```
-    "require" : {
-        "researchgate/converter": "dev-master"
-    }
+$ composer require researchgate/converter
 ```
+
 ### Other
-Make sure you are using a
-[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md "PSR-2")
-compatible autoloader.
+
+Make sure you are using a [PSR-4](https://www.php-fig.org/psr/psr-4/) compatible autoloader.
 
 ## Usage
-To convert form one standard to an other:
+
+To convert from one standard to an other:
+
 ```php
     // include the composer autoloader
     require __DIR__ . '/vendor/autoload.php';
@@ -82,10 +86,10 @@ To convert form one standard to an other:
       *     }
       * ]
       */
-
 ```
 
 ## Adding a standard
+
 To implement a new standard is quite simple:
 
 1. Create a copy of the folder **src/Geissler/Converter/Standard/Template**
@@ -95,6 +99,4 @@ To implement a new standard is quite simple:
  name of the new standard.
 5. Implement the methods **create** and **retrieve** in **Creator.php**
 6. Implement the methods **parse** and **retrieve** in **Parser.php**
-7. Don't forget to write your PHPUnit tests and follow the
-[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md "PSR-2") coding
-standard
+7. Don't forget to write your PHPUnit tests and follow the [PSR-12](https://www.php-fig.org/psr/psr-12/) coding standard
