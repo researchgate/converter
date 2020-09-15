@@ -1,6 +1,8 @@
 ## Converter
 [![Build Status](https://travis-ci.org/geissler/converter.png?branch=master)](https://travis-ci.org/geissler/converter)
 
+**Forked from [geissler/converter](https://github.com/geissler/converter).** Thank you for your amazing contributions 🙏.
+
 A small library to convert the input data for different literature standards like BibTeX, CSL etc. into each other.
 At the moment are supported [BibTeX](http://en.wikipedia.org/wiki/BibTeX "BibTeX"),
 [CSL](http://citationstyles.org/ "CSL") and [RIS](http://en.wikipedia.org/wiki/RIS_\(file_format\) "RIS").
@@ -10,7 +12,7 @@ At the moment are supported [BibTeX](http://en.wikipedia.org/wiki/BibTeX "BibTeX
 Add to the `composer.json` the `require` key and run composer install.
 ```
     "require" : {
-        "geissler/converter": "dev-master"
+        "researchgate/converter": "dev-master"
     }
 ```
 ### Other
