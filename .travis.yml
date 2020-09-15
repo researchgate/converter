@@ -8,10 +8,10 @@ before_script:
   - composer install
 
 script:
-  - phpcs --standard=PSR12 src
-  - phpstan analyse
-  - psalm
-  - phpunit --coverage-text --bootstrap tests/bootstrap.php tests/
+  - php vendor/bin/phpcs --standard=PSR12 src
+  - php vendor/bin/phpstan analyse
+  - php vendor/bin/psalm
+  - php vendor/bin/phpunit --coverage-text --bootstrap tests/bootstrap.php tests/
 
 notifications:
   email: false
