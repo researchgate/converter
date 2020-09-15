@@ -78,9 +78,9 @@ class Entry
     private $eventPlace;
     /** @var string */
     private $genre;
-    /** @var number|string */
+    /** @var string */
     private $ISBN;
-    /** @var number|string */
+    /** @var string */
     private $ISSN;
     /** @var string */
     private $jurisdiction;
@@ -242,7 +242,7 @@ class Entry
     /**
      * International Standard Book Number.
      *
-     * @return number|string
+     * @return string
      */
     public function getISBN()
     {
@@ -264,7 +264,7 @@ class Entry
     /**
      * International Standard Serial Number.
      *
-     * @return number|string
+     * @return string
      */
     public function getISSN()
     {

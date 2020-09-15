@@ -242,8 +242,6 @@ class Parser implements ParserInterface
 
             if (isset($data[0]) == true) {
                 $date->setYear($data[0]);
-            } elseif (isset($values['year']) == true) {
-                $date->setYear($data['year']);
             }
 
             if (isset($data[1]) == true || isset($data['month']) == true) {
@@ -256,8 +254,6 @@ class Parser implements ParserInterface
 
             if (isset($data[2]) == true) {
                 $date->setDay($data[2]);
-            } elseif (isset($values['day']) == true) {
-                $date->setDay($data['day']);
             }
 
             $this->entry->$method()->setDate($date);

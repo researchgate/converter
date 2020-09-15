@@ -11,6 +11,8 @@ before_script:
 
 script:
   - phpcs --standard=PSR12 src
+  - phpstan analyse
+  - psalm
   - phpunit --coverage-text --bootstrap tests/bootstrap.php tests/
 
 notifications:
