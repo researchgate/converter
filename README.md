@@ -1,5 +1,5 @@
 ## Converter
-[![Build Status](https://travis-ci.org/geissler/converter.png?branch=master)](https://travis-ci.org/geissler/converter)
+[![Build Status](https://travis-ci.com/researchgate/converter.svg?branch=master)](https://travis-ci.com/researchgate/converter)
 
 **Forked from [geissler/converter](https://github.com/geissler/converter).** Thank you for your amazing contributions 🙏.
 
