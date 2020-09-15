@@ -6,8 +6,6 @@ php:
 
 before_script:
   - composer install
-  - pyrus install http://phptal.org/latest.tar.gz
-  - phpenv rehash
 
 script:
   - phpcs --standard=PSR12 src
