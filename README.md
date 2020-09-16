@@ -5,8 +5,13 @@
 **Forked from [geissler/converter](https://github.com/geissler/converter).** Thank you for your amazing contributions 🙏.
 
 A small library to convert the input data for different literature standards like BibTeX, CSL etc. into each other.
-At the moment are supported [BibTeX](http://en.wikipedia.org/wiki/BibTeX "BibTeX"),
-[CSL](http://citationstyles.org/ "CSL") and [RIS](http://en.wikipedia.org/wiki/RIS_\(file_format\) "RIS").
+
+Supported formats:
+
+- [BibTeX](http://en.wikipedia.org/wiki/BibTeX "BibTeX")
+- [CSL](http://citationstyles.org/ "CSL")
+- [RIS](http://en.wikipedia.org/wiki/RIS_\(file_format\) "RIS")
+- [AMA](https://web.archive.org/web/20200207081150/https://www.bcit.ca/files/library/pdf/bcit-ama_citation_guide.pdf "AMA")
 
 ## Installation
 
