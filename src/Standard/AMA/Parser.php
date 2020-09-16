@@ -125,8 +125,10 @@ class Parser implements ParserInterface
         $entry->setVolume($volume);
         $entry->setIssue($issue);
 
-        $entry->getPages()->setStart($pageStart);
-        $entry->getPages()->setEnd($pageEnd);
+        if ($pageStart && $pageEnd) {
+            $entry->getPages()->setStart((int) $pageStart);
+            $entry->getPages()->setEnd((int) $pageEnd);
+        }
 
         return $entry;
     }
