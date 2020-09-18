@@ -80,6 +80,23 @@ class ACSTest extends TestCase
      * @test
      * @covers \Geissler\Converter\Standard\ACS\ACS::create
      */
+    public function createJournalArticleWithTitle(): void
+    {
+        $ama = new ACS();
+        $expectedOutput = 'Klingler, J. Influence of Pretreatment on Sodium Powder. Chem. Mater. 2005, 17, 2755-2768.';
+
+        $ama->parse($expectedOutput);
+
+        /** @var Entries $entries */
+        $entries = $ama->retrieve();
+
+        $this->assertEquals($expectedOutput, $ama->create($entries));
+    }
+
+    /**
+     * @test
+     * @covers \Geissler\Converter\Standard\ACS\ACS::create
+     */
     public function createJournalArticleWithoutTitle(): void
     {
         $ama = new ACS();

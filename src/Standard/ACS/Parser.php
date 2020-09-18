@@ -76,14 +76,14 @@ class Parser implements ParserInterface
         }
 
         list ($fullMatch, $year, $volume, $from, $to) = $matches;
-        $entry->getPages()->setStart($from);
-        if ('' !== $to) {
-            $entry->getPages()->setEnd($to);
+        $entry->getPages()->setStart((int) $from);
+        if ($to) {
+            $entry->getPages()->setEnd((int) $to);
         }
 
         $rawEntry = trim(substr($rawEntry, 0, strlen($rawEntry) - strlen($fullMatch)));
 
-        $entry->getOriginalDate()->setDate((new Date())->setYear($year));
+        $entry->getOriginalDate()->setDate((new Date())->setYear((int) $year));
         $entry->setVolume($volume);
 
         $journalName = trim($rawEntry);
