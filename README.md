@@ -12,6 +12,7 @@ Supported formats:
 - [CSL](http://citationstyles.org/ "CSL")
 - [RIS](http://en.wikipedia.org/wiki/RIS_\(file_format\) "RIS")
 - [AMA](https://web.archive.org/web/20200207081150/https://www.bcit.ca/files/library/pdf/bcit-ama_citation_guide.pdf "AMA")
+- [ACS](https://web.archive.org/web/20170527202056/https://pubs.acs.org/doi/pdf/10.1021/bk-2006-STYG.ch014 "ACS")
 
 ## Installation
 
