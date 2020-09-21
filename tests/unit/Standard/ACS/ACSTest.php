@@ -20,8 +20,8 @@ class ACSTest extends TestCase
      */
     public function parseWithEmptyStringsReturnsFalse(): void
     {
-        $ama = new ACS();
-        $this->assertFalse($ama->parse(''));
+        $acs = new ACS();
+        $this->assertFalse($acs->parse(''));
     }
 
     /**
@@ -30,12 +30,12 @@ class ACSTest extends TestCase
      */
     public function parseUnderstandsJournalArticleWithTitle(): void
     {
-        $ama = new ACS();
+        $acs = new ACS();
         $input = 'Klingler, J. Influence of Pretreatment on Sodium Powder. Chem. Mater. 2005, 17, 2755-2768.';
 
-        $this->assertTrue($ama->parse($input));
+        $this->assertTrue($acs->parse($input));
         /** @var Entry $entry */
-        $entry = $ama->retrieve()->offsetGet(0);
+        $entry = $acs->retrieve()->offsetGet(0);
 
         $this->assertEquals('Klingler', $entry->getAuthor()->offsetGet(0)->getFamily());
         $this->assertEquals('J', $entry->getAuthor()->offsetGet(0)->getGiven());
@@ -56,12 +56,12 @@ class ACSTest extends TestCase
      */
     public function parseUnderstandsJournalArticleWithoutTitle(): void
     {
-        $ama = new ACS();
+        $acs = new ACS();
         $input = 'Klingler, J. Chem. Mater. 2005, 17, 2755-2768.';
 
-        $this->assertTrue($ama->parse($input));
+        $this->assertTrue($acs->parse($input));
         /** @var Entry $entry */
-        $entry = $ama->retrieve()->offsetGet(0);
+        $entry = $acs->retrieve()->offsetGet(0);
 
         $this->assertEquals('Klingler', $entry->getAuthor()->offsetGet(0)->getFamily());
         $this->assertEquals('J', $entry->getAuthor()->offsetGet(0)->getGiven());
@@ -82,15 +82,15 @@ class ACSTest extends TestCase
      */
     public function createJournalArticleWithTitle(): void
     {
-        $ama = new ACS();
+        $acs = new ACS();
         $expectedOutput = 'Klingler, J. Influence of Pretreatment on Sodium Powder. Chem. Mater. 2005, 17, 2755-2768.';
 
-        $ama->parse($expectedOutput);
+        $acs->parse($expectedOutput);
 
         /** @var Entries $entries */
-        $entries = $ama->retrieve();
+        $entries = $acs->retrieve();
 
-        $this->assertEquals($expectedOutput, $ama->create($entries));
+        $this->assertEquals($expectedOutput, $acs->create($entries));
     }
 
     /**
@@ -99,14 +99,14 @@ class ACSTest extends TestCase
      */
     public function createJournalArticleWithoutTitle(): void
     {
-        $ama = new ACS();
+        $acs = new ACS();
         $expectedOutput = 'Klingler, J. Chem. Mater. 2005, 17, 2755-2768.';
 
-        $ama->parse($expectedOutput);
+        $acs->parse($expectedOutput);
 
         /** @var Entries $entries */
-        $entries = $ama->retrieve();
+        $entries = $acs->retrieve();
 
-        $this->assertEquals($expectedOutput, $ama->create($entries));
+        $this->assertEquals($expectedOutput, $acs->create($entries));
     }
 }
