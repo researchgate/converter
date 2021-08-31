@@ -145,7 +145,7 @@ class PARSEENTRIES
     public $parseFile = true;
 
 // Open bib file
-	function openBib($file)
+	public function openBib($file)
 	{
 		if(!is_file($file))
 			die;
@@ -166,17 +166,17 @@ class PARSEENTRIES
 	}
 
 // Set strings macro
-	function loadStringMacro($macro_array)
+	public function loadStringMacro($macro_array)
 	{
 		$this->userStrings = $macro_array;
 	}
 // Close bib file
-	function closeBib()
+	public function closeBib()
 	{
 		fclose($this->fid);
 	}
 // Get a non-empty line from the bib file or from the bibtexString
-	function getLine()
+	public function getLine()
 	{
 		if($this->parseFile)
 		{
@@ -204,7 +204,7 @@ class PARSEENTRIES
 	}
 // Extract value part of @string field enclosed by double-quotes or braces.
 // The string may be expanded with previously-defined strings
-	function extractStringValue($string) 
+	public function extractStringValue($string) 
 	{
 		// $string contains a end delimiter, remove it
 		$string = trim(substr($string,0,strlen($string)-1));
@@ -213,7 +213,7 @@ class PARSEENTRIES
 		return $string;
 	}
 // Extract a field
-	function fieldSplit($seg)
+	public function fieldSplit($seg)
 	{
 // echo "**** ";print_r($seg);echo "<BR>";
 		// handle fields like another-field = {}
@@ -226,7 +226,7 @@ class PARSEENTRIES
 		return [$array[0], $array[1]];
 	}
 // Extract and format fields
-	function reduceFields($oldString)
+	public function reduceFields($oldString)
 	{
 		// 03/05/2005 G. Gardey. Do not remove all occurences, juste one
 		// * correctly parse an entry ended by: somefield = {aValue}}
@@ -238,7 +238,7 @@ class PARSEENTRIES
 		$string = $split[1];
 		while($string)
 		{
-			list($entry, $string) = $this->fieldSplit($string);
+			[$entry, $string] = $this->fieldSplit($string);
 			$values[] = $entry;
 		}
 		foreach($values as $value)
@@ -274,7 +274,7 @@ class PARSEENTRIES
 	}
 // Start splitting a bibtex entry into component fields.
 // Store the entry type and citation.
-	function fullSplit($entry)
+	public function fullSplit($entry)
 	{        
 		$matches = preg_split("/@(.*)[{(](.*),/U", $entry, 2, PREG_SPLIT_DELIM_CAPTURE); 
 		$this->entries[$this->count]['bibtexEntryType'] = strtolower(trim($matches[1]));
@@ -287,7 +287,7 @@ class PARSEENTRIES
 	}
 
 // Grab a complete bibtex entry
-	function parseEntry($entry)
+	public function parseEntry($entry)
 	{
 		$count = 0;
 		$lastLine = FALSE;
@@ -313,7 +313,7 @@ class PARSEENTRIES
 	}
 
 // Remove delimiters from a string
-	function removeDelimiters($string)
+	public function removeDelimiters($string)
 	{
 		if($string  && ($string[0] == "\""))
 		{
@@ -340,7 +340,7 @@ class PARSEENTRIES
 // This function works like explode('#',$val) but has to take into account whether
 // the character # is part of a string (i.e., is enclosed into "..." or {...} ) 
 // or defines a string concatenation as in @string{ "x # x" # ss # {xx{x}x} }
-	function explodeString($val)
+	public function explodeString($val)
 	{
 		$openquote = $bracelevel = $i = $j = 0; 
 		while ($i < strlen($val))
@@ -369,7 +369,7 @@ class PARSEENTRIES
 //    but braces must also be balanced inside quotes! 
 //  * Inside quotes, to place the " character it is not sufficient 
 //    to simply escape with \": Quotes must be placed inside braces. 
-	function closingDelimiter($val,$delimitEnd)
+	public function closingDelimiter($val,$delimitEnd)
 	{
 //  echo "####>$delimitEnd $val<BR>";
 		$openquote = $bracelevel = $i = $j = 0; 
@@ -391,7 +391,7 @@ class PARSEENTRIES
 	}
 
 // Remove enclosures around entry field values.  Additionally, expand macros if flag set.
-	function removeDelimitersAndExpand($string, $inpreamble = FALSE)
+	public function removeDelimitersAndExpand($string, $inpreamble = FALSE)
 	{
 		// only expand the macro if flag set, if strings defined and not in preamble
 		if(!$this->expandMacro || empty($this->strings) || $inpreamble)
@@ -470,7 +470,7 @@ class PARSEENTRIES
 	}
 
 // Return arrays of entries etc. to the calling process.
-	function returnArrays()
+	public function returnArrays()
 	{
 		foreach($this->preamble as $value)
 		{

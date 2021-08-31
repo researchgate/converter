@@ -27,7 +27,7 @@ http://bibliophile.sourceforge.net
 
 class PARSECREATORS
 {
-	function __construct()
+	public function __construct()
 	{
 	}
 /* Create writer arrays from bibtex input.
@@ -36,7 +36,7 @@ class PARSECREATORS
 2. <von-tokens> <last-tokens>, <first-tokens>
 3. <von-tokens> <last-tokens>, <jr-tokens>, <first-tokens>
 */
-	function parse($input)
+	public function parse($input)
 	{
 		$input = trim($input);
 // split on ' and ' 
@@ -72,7 +72,7 @@ class PARSECREATORS
 			else if($size == 2)
 			{
 // first of array is surname (perhaps with prefix)
-				list($surname, $prefix) = $this->grabSurname(array_shift($author));
+				[$surname, $prefix] = $this->grabSurname(array_shift($author));
 			}
 // If $size is 3, we're looking at something like Bush, Jr. III, George W
 			else
@@ -80,10 +80,10 @@ class PARSECREATORS
 // middle of array is 'Jr.', 'IV' etc.
 				$appellation = join(' ', array_splice($author, 1, 1));
 // first of array is surname (perhaps with prefix)
-				list($surname, $prefix) = $this->grabSurname(array_shift($author));
+				[$surname, $prefix] = $this->grabSurname(array_shift($author));
 			}
 			$remainder = join(" ", $author);
-			list($firstname, $initials) = $this->grabFirstnameInitials($remainder);
+			[$firstname, $initials] = $this->grabFirstnameInitials($remainder);
 			if(!empty($this->prefix))
 				$prefix = join(' ', $this->prefix);
 			$surname = $surname . ' ' . $appellation;
@@ -94,7 +94,7 @@ class PARSECREATORS
 		return FALSE;
 	}
 // grab firstname and initials which may be of form "A.B.C." or "A. B. C. " or " A B C " etc.
-	function grabFirstnameInitials($remainder)
+	public function grabFirstnameInitials($remainder)
 	{
 		$firstname = $initials = '';
 		$array = explode(" ", $remainder);
@@ -119,7 +119,7 @@ class PARSECREATORS
 	}
 // surname may have title such as 'den', 'von', 'de la' etc. - characterised by first character lowercased.  Any 
 // uppercased part means lowercased parts following are part of the surname (e.g. Van den Bussche)
-	function grabSurname($input)
+	public function grabSurname($input)
 	{
 		$surnameArray = explode(" ", $input);
 		$noPrefix = $surname = FALSE;

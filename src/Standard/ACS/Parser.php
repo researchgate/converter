@@ -58,10 +58,10 @@ class Parser implements ParserInterface
             throw new InvalidArgumentException("Could not parse author list in {$rawEntry}.");
         }
 
-        list (, $rawAuthorList) = $matches;
+         [, $rawAuthorList] = $matches;
         $rawAuthorList = trim($rawAuthorList);
         foreach (explode(';', $rawAuthorList) as $rawAuthor) {
-            list ($family, $given) = explode(',', $rawAuthor);
+             [$family, $given] = explode(',', $rawAuthor);
 
             $person = new Person();
             $person->setFamily($family)->setGiven(trim($given));
@@ -75,7 +75,7 @@ class Parser implements ParserInterface
             throw new InvalidArgumentException("Could not parse page range {$rawEntry}.");
         }
 
-        list ($fullMatch, $year, $volume, $from, $to) = $matches;
+         [$fullMatch, $year, $volume, $from, $to] = $matches;
         $entry->getPages()->setStart((int) $from);
         if ($to) {
             $entry->getPages()->setEnd((int) $to);
@@ -90,7 +90,7 @@ class Parser implements ParserInterface
 
         // This is quite hacky. But the citation format is very ambiguous. Potential solutions to this
         // include using a language grammar or having a lookup table with common CASSI abbreviations (1k+ entries).
-        list ($title) = explode('.', $rawEntry);
+         [$title] = explode('.', $rawEntry);
         if (strlen($title) > 10) {
             $entry->setTitle($title);
             $journalName = trim(substr($rawEntry, strlen($title) + 1));

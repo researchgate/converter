@@ -68,7 +68,7 @@ class Parser implements ParserInterface
         $authors = array_map('trim', explode(',', $authorString));
 
         foreach ($authors as $i => $author) {
-            list ($familyName, $givenNames) = explode(' ', $author);
+             [$familyName, $givenNames] = explode(' ', $author);
             $person = new Person();
 
             // "et al" -> this citation has more than 6 authors
@@ -116,7 +116,7 @@ class Parser implements ParserInterface
             throw new InvalidArgumentException("Could not parse a metadata section {$meta}.");
         }
 
-        list (, $year, $volume, $issue, $pageStart, $pageEnd) = $matches;
+         [, $year, $volume, $issue, $pageStart, $pageEnd] = $matches;
 
         $date = new Date();
         $date->setYear((int) $year);
@@ -139,7 +139,7 @@ class Parser implements ParserInterface
             throw new InvalidArgumentException("Could not parse a dot separated part {$rawString}.");
         }
 
-        list (, $part) = $matches;
+         [, $part] = $matches;
         return trim($part);
     }
 
