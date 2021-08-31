@@ -66,7 +66,7 @@ series = {10},
 address = {The address},
 edition = {3},
 isbn = {3257227892}
-}'
+}',
             ],
             ['@inbook{inbook,
   author       = {Peter Eston},
@@ -95,7 +95,7 @@ series = {5},
 address = {The address of the publisher},
 edition = {3},
 chapter = {8}
-}'
+}',
             ],
             ['@Book{Von330,
   author = {von Rohden, Hermann and Winnefeld, Hermann},
@@ -127,7 +127,7 @@ year = {1911},
 title = {{Die antiken Terrakotten IV, 2 - Architektonische römische Tonreliefs der Kaiserzeit}},
 address = {Berlin},
 keywords = {Nemi, NochZuLesen, Terrakotten, Vergleich}
-}'],
+}', ],
             ['@InCollection{Demma1635,
   author = "Demma, Filippo and Pietrafesa, D and Pintucci, Alessandro",
   title = "Palestrina, santuari e domus - Nuovi dati sulla città bassa",
@@ -156,7 +156,7 @@ address = {Rom},
 isbn = {88-8016-510-0},
 booktitle = {Il Lazio. Regione di Roma. Kolloquium, 12. Juli - 10. September 2002, Palestrina},
 keywords = {Entwicklung, Kontext, NochZuLesen, Praeneste, Stadt}
-}'],
+}', ],
             ['@phdthesis{phdthesis,
   author       = {Peter Joslin},
   title        = {The title of the work},
@@ -176,7 +176,7 @@ title = {The title of the work},
 note = {An optional note},
 address = {The address of the publisher},
 school = {The school where the thesis was written}
-}'],
+}', ],
             ['@Book{Von330,
   author = {von Rohden, Hermann and Winnefeld, Hermann},
   title = {{Die antiken Terrakotten IV, 2 - Architektonische römische Tonreliefs der Kaiserzeit}},
@@ -241,7 +241,7 @@ year = {1973},
 title = {{Scavi di Ostia VII - I capitelli}},
 address = {Rom},
 keywords = {Architektur, NochZuLesen, Ostia, Vergleich}
-}'],
+}', ],
             [
                 '@article{Pensabene332,
 author = {Pensabene, Patrizio},
@@ -332,8 +332,8 @@ year = {1973},
 title = {{Scavi di Ostia VII - I capitelli}},
 address = {Rom},
 keywords = {Architektur, NochZuLesen, Ostia, Vergleich}
-}'
-            ]
+}',
+            ],
         ];
     }
 

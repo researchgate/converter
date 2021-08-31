@@ -70,7 +70,7 @@ VL  - 3
 DO  - DOI: 10.xxxxxxxxx
 KW  - HIV
 KW  - AIDS
-ER  - '
+ER  - ',
             ],
             [
                 'TY  - JOUR
@@ -263,7 +263,7 @@ AU  - Kellum, B
 ER  - ' . '
 TY  - BOOK
 AU  - Kellum, B
-ER  - '
+ER  - ',
             ],
             [
                 'TY  - THES
@@ -298,7 +298,7 @@ KW  - Ostia
 KW  - Religion
 KW  - Spes
 KW  - Venus
-ER  - '
+ER  - ',
             ],
             [
                 'TY  - JOUR
@@ -329,7 +329,7 @@ T1  - Funde und Forschungen in den Vesuvstädten II
 VL  - 22
 KW  - Pompeji
 KW  - Religion
-ER  - '
+ER  - ',
             ],
         ];
     }
@@ -368,15 +368,15 @@ ER  - '
 
         $this->assertTrue($creator->create($entries));
         $expectedOutput = <<<RIS
-TY  - BOOK
-PY  - 1984/1/19/Winter
-Y2  - 1984///summer
-EP  - 123
-ER  - 
-TY  - BOOK
-T1  - No Year
-ER  - 
-RIS;
+            TY  - BOOK
+            PY  - 1984/1/19/Winter
+            Y2  - 1984///summer
+            EP  - 123
+            ER  - 
+            TY  - BOOK
+            T1  - No Year
+            ER  - 
+            RIS;
         // Fix line endings
         $expectedOutput = str_replace(PHP_EOL, RISReader::RIS_EOL, $expectedOutput);
 

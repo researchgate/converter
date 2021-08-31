@@ -57,7 +57,7 @@ class CSLTest extends TestCase
         },
         "title": "BookA"
     }
-]']
+]'],
         ];
     }
 }

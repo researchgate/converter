@@ -46,13 +46,13 @@ class Parser implements ParserInterface
                 'A2'    =>  'getEditor',
                 'A4'    =>  'getTranslator',
                 'AU'    =>  'getAuthor',
-                'TA'    =>  'getOriginalAuthor'
+                'TA'    =>  'getOriginalAuthor',
             ];
 
             $dates  =   [
                 'Y1'    =>  'getIssued',
                 'PY'    =>  'getIssued',
-                'Y2'    =>  'getAccessed'
+                'Y2'    =>  'getAccessed',
             ];
 
             $fields = [
@@ -86,7 +86,7 @@ class Parser implements ParserInterface
                 'RI'    => 'setReviewedTitle',
                 'SE'    => 'setVersion',
                 'ST'    => 'setTitleShort',
-                'RP'    => 'setReprintEdition'
+                'RP'    => 'setReprintEdition',
             ];
 
             foreach ($records as $record) {

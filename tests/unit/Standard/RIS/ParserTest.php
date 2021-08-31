@@ -103,13 +103,13 @@ ER  - ',
                     'authors'   =>  [
                         [
                             'family'    =>  'Einstein',
-                            'given'     =>  'Albert'
-                        ]
+                            'given'     =>  'Albert',
+                        ],
                     ],
                     'year'      =>  1916,
                     'title'     =>  'Die Grundlage der allgemeinen Relativitätstheorie',
                     'type'      =>  'articleJournal',
-                    'container' =>  'Annalen der Physik'
+                    'container' =>  'Annalen der Physik',
                 ],
             ],
             [
@@ -128,16 +128,16 @@ ER  - ',
                     'authors'   =>  [
                         [
                             'family'    =>  'Shannon',
-                            'given'     =>  'Claude E.'
-                        ]
+                            'given'     =>  'Claude E.',
+                        ],
                     ],
                     'year'      =>  1948,
                     'title'     =>  'A Mathematical Theory of Communication',
                     'type'      =>  'articleJournal',
                     'container' =>  'Bell System Technical Journal',
                     'month'     =>  '07',
-                    'keyword'   =>  ['First', 'Second']
-                ]
+                    'keyword'   =>  ['First', 'Second'],
+                ],
             ],
             [
                 [
@@ -165,24 +165,24 @@ ER  -  ',
                     'authors'   =>  [
                         [
                             'family'    =>  'Baldwin',
-                            'given'     =>  'S.A.'
+                            'given'     =>  'S.A.',
                         ],
                         [
                             'family'    =>  'Fugaccia',
-                            'given'     =>  'I.'
+                            'given'     =>  'I.',
                         ],
                         [
                             'family'    =>  'Brown',
-                            'given'     =>  'D.R.'
+                            'given'     =>  'D.R.',
                         ],
                         [
                             'family'    =>  'Brown',
-                            'given'     =>  'L.V.'
+                            'given'     =>  'L.V.',
                         ],
                         [
                             'family'    =>  'Scheff',
-                            'given'     =>  'S.W.'
-                        ]
+                            'given'     =>  'S.W.',
+                        ],
 
                     ],
                     'year'      =>  1996,
@@ -190,9 +190,9 @@ ER  -  ',
                     'type'      =>  'articleJournal',
                     'keyword'   =>  [
                         'cortical', 'contusion', 'blood-brain', 'barrier', 'horseradish', 'peroxidase',
-                        'hippocampus', 'rat'
-                    ]
-                ]
+                        'hippocampus', 'rat',
+                    ],
+                ],
             ],
             [
                 [
@@ -216,23 +216,23 @@ ER  - ',
                     'authors'   =>  [
                         [
                             'family'    =>  'Franks',
-                            'given'     =>  'L.M.'
-                        ]
+                            'given'     =>  'L.M.',
+                        ],
                     ],
                     'editors'   =>  [
                         [
                             'family'    =>  'Jackson',
-                            'given'     =>  'H.'
+                            'given'     =>  'H.',
                         ],
                         [
                             'family'    =>  'Weisl',
-                            'given'     =>  'R.'
-                        ]
+                            'given'     =>  'R.',
+                        ],
                     ],
                     'year'      =>  1991,
                     'title'     =>  'Preface by an AIDS Victim',
                     'type'      =>  'chapter',
-                ]
+                ],
             ],
             [
                 [
@@ -258,12 +258,12 @@ ER  - ',
                     'authors'   =>  [
                         [
                             'family'    =>  'Rieger',
-                            'given'     =>  'Anna-Katharina'
-                        ]
+                            'given'     =>  'Anna-Katharina',
+                        ],
                     ],
-                    'year'      =>  '2004'
-                ]
-            ]
+                    'year'      =>  '2004',
+                ],
+            ],
         ];
     }
 
@@ -341,9 +341,9 @@ ER  - ',
                 ['Iossif', 'Kellum'],
                 [
                     ['Kaiser', 'Kaiserzeit', 'Kult', 'NochZuLesen', 'Religion'],
-                    ['Geschichte', 'NochZuLesen', 'Sozial']
-                ]
-            ]
+                    ['Geschichte', 'NochZuLesen', 'Sozial'],
+                ],
+            ],
         ];
     }
 
@@ -490,9 +490,9 @@ ER  -',
                     'articleJournal', 'abstract', 'motionPicture', 'graphic', 'bill', 'book', 'legalCase', 'chapter',
                     'catalog', 'dataset', 'webpage', 'articleMagazine', 'musicalScore', 'articleNewspaper', 'pamphlet',
                     'personalCommunication', 'report', 'manuscript', 'patent', 'video', 'software', 'map', 'slide',
-                    'unknown'
-                ]
-            ]
+                    'unknown',
+                ],
+            ],
         ];
     }
 

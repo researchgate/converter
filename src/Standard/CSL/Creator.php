@@ -45,7 +45,7 @@ class Creator implements CreatorInterface
                     'original-author'       =>  'getOriginalAuthor',
                     'recipient'             =>  'getRecipient',
                     'reviewed-author'       =>  'getReviewedAuthor',
-                    'translator'            =>  'getTranslator'
+                    'translator'            =>  'getTranslator',
                 ];
                 foreach ($persons as $field => $getter) {
                     $person =   $this->createPerson($entry->$getter());
@@ -60,7 +60,7 @@ class Creator implements CreatorInterface
                     'event-date'    =>  'getEventDate',
                     'issued'        =>  'getIssued',
                     'original-date' =>  'getOriginalDate',
-                    'submitted'     =>  'getSubmitted'
+                    'submitted'     =>  'getSubmitted',
                 ];
                 foreach ($dates as $field => $getter) {
                     $date   =   $this->createDate($entry->$getter());
@@ -127,7 +127,7 @@ class Creator implements CreatorInterface
                     'title-short'                 => 'getTitleShort',
                     'URL'                         => 'getURL',
                     'version'                     => 'getVersion',
-                    'yearSuffix'                  => 'getYearSuffix'
+                    'yearSuffix'                  => 'getYearSuffix',
                 ];
 
                 foreach ($fields as $field => $getter) {
@@ -218,7 +218,7 @@ class Creator implements CreatorInterface
             'given'                 =>  'getGiven',
             'dropping-particle'     =>  'getDroppingParticle',
             'non-dropping-particle' =>  'getNonDroppingParticle',
-            'suffix'                =>  'getSuffix'
+            'suffix'                =>  'getSuffix',
         ];
 
         foreach ($persons as $person) {

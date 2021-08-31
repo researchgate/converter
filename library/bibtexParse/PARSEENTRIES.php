@@ -149,14 +149,14 @@ class PARSEENTRIES
 	{
 		if(!is_file($file))
 			die;
-		$this->fid = fopen ($file,'r');
+		$this->fid = fopen ($file, 'r');
 		$this->parseFile = TRUE;
 	}
 // Load a bibtex string to parse it
 	public function loadBibtexString($bibtex_string)
 	{
 		if(is_string($bibtex_string)) {
-			$this->bibtexString = explode("\n",$bibtex_string);
+			$this->bibtexString = explode("\n", $bibtex_string);
         } else {
             $this->bibtexString = $bibtex_string;
         }
@@ -207,7 +207,7 @@ class PARSEENTRIES
 	public function extractStringValue($string) 
 	{
 		// $string contains a end delimiter, remove it
-		$string = trim(substr($string,0,strlen($string)-1));
+		$string = trim(substr($string, 0, strlen($string)-1));
 		// remove delimiters and expand
 		$string = $this->removeDelimitersAndExpand($string);
 		return $string;
@@ -232,7 +232,7 @@ class PARSEENTRIES
 		// * correctly parse an entry ended by: somefield = {aValue}}
 		$lg = strlen($oldString);
 		if($oldString[$lg-1] == "}" || $oldString[$lg-1] == ")" || $oldString[$lg-1] == ",")
-			$oldString = substr($oldString,0,$lg-1);
+			$oldString = substr($oldString, 0, $lg-1);
 		// $oldString = rtrim($oldString, "}),");
 		$split = preg_split("/=/", $oldString, 2);
 		$string = $split[1];
@@ -353,12 +353,12 @@ class PARSEENTRIES
 				$bracelevel--;
 			elseif ( $val[$i] == '#' && !$openquote && !$bracelevel )
 			{
-				$strings[] = substr($val,$j,$i-$j);
+				$strings[] = substr($val, $j, $i-$j);
 				$j=$i+1;
 			}
 			$i++;
 		}
-		$strings[] = substr($val,$j);
+		$strings[] = substr($val, $j);
 		return $strings;
 	}
 
@@ -369,7 +369,7 @@ class PARSEENTRIES
 //    but braces must also be balanced inside quotes! 
 //  * Inside quotes, to place the " character it is not sufficient 
 //    to simply escape with \": Quotes must be placed inside braces. 
-	public function closingDelimiter($val,$delimitEnd)
+	public function closingDelimiter($val, $delimitEnd)
 	{
 //  echo "####>$delimitEnd $val<BR>";
 		$openquote = $bracelevel = $i = $j = 0; 
@@ -429,10 +429,10 @@ class PARSEENTRIES
                 $line = $possibleEntryStart . $line;
             }
 
-			if (!$inside && strchr($line,"@"))
+			if (!$inside && strchr($line, "@"))
 			{
 				// throw all characters before the '@'
-				$line=strstr($line,'@');
+				$line=strstr($line, '@');
 				if(!strchr($line, "{") && !strchr($line, "(")) {
                     $possibleEntryStart = $line;
                 } elseif(preg_match("/@.*([{(])/U", preg_quote($line), $matches)) {
@@ -448,18 +448,18 @@ class PARSEENTRIES
 			if ($inside)
 			{
 				$entry .= " ".$line;
-				if ($j=$this->closingDelimiter($entry,$delimitEnd))
+				if ($j=$this->closingDelimiter($entry, $delimitEnd))
 				{
 					// all characters after the delimiter are thrown but the remaining 
 					// characters must be kept since they may start the next entry !!!
-					$lastLine = substr($entry,$j+1);
-					$entry = substr($entry,0,$j+1);
+					$lastLine = substr($entry, $j+1);
+					$entry = substr($entry, 0, $j+1);
 					// Strip excess whitespaces from the entry
                     // B. Geißler 03.03.2013
                     // changed preg_replace to avoid troubles with à
 					$entry = preg_replace('/{[ \t]+}/', ' ', $entry);
 					$this->parseEntry($entry);
-					$entry = strchr($lastLine,"@");
+					$entry = strchr($lastLine, "@");
 					if ($entry) 
 						$inside = TRUE;
 					else 

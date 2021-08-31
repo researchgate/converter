@@ -34,13 +34,13 @@ class Creator implements CreatorInterface
                 'A2'    =>  'getEditor',
                 'A4'    =>  'getTranslator',
                 'AU'    =>  'getAuthor',
-                'TA'    =>  'getOriginalAuthor'
+                'TA'    =>  'getOriginalAuthor',
             ];
 
             $dates  =   [
                 'Y1'    =>  'getIssued',
                 'PY'    =>  'getIssued',
-                'Y2'    =>  'getAccessed'
+                'Y2'    =>  'getAccessed',
             ];
 
             $fields = [
@@ -82,7 +82,7 @@ class Creator implements CreatorInterface
 
             $identical  =   [
                 'T1'    =>  ['TI', 'CT'],
-                'PY'    =>  ['Y1']
+                'PY'    =>  ['Y1'],
             ];
 
             foreach ($data as $entry) {

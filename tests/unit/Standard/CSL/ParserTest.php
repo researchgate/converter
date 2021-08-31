@@ -112,15 +112,15 @@ class ParserTest extends TestCase
 ]',
                 [
                     ['Roe', 'Doe', 'Smith'],
-                    ['Roe', 'Noakes', 'Brown']
+                    ['Roe', 'Noakes', 'Brown'],
                 ],
                 [
-                    1995, 1995
+                    1995, 1995,
                 ],
                 [
-                    'book', 'book'
+                    'book', 'book',
                 ],
-                ['', '']
+                ['', ''],
             ],
             [
                 '[
@@ -148,15 +148,15 @@ class ParserTest extends TestCase
           }
     ]',
                 [
-                    ['Wallace-Hadrill']
+                    ['Wallace-Hadrill'],
                 ],
                 [
-                    '2011'
+                    '2011',
                 ],
                 [
-                    'articleJournal'
+                    'articleJournal',
                 ],
-                ['The monumental centre of Herculaneum. In search of the identities of the public buildings']
+                ['The monumental centre of Herculaneum. In search of the identities of the public buildings'],
             ],
             [
                 '[
@@ -201,12 +201,12 @@ class ParserTest extends TestCase
     }
 ]',
                 [
-                    ['Άγρας']
+                    ['Άγρας'],
                 ],
                 ['1998'],
                 ['chapter'],
-                ['Ο Καρυωτάκης και οι Σάτιρες']
-            ]
+                ['Ο Καρυωτάκης και οι Σάτιρες'],
+            ],
         ];
     }
 

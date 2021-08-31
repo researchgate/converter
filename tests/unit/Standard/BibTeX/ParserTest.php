@@ -81,7 +81,7 @@ class ParserTest extends TestCase
                 'Granino Cecere',
                 "Pecunia sacra e proprietà fondiarai nei santuari dell'Italia centrale - Il contributo dell'epigrafia",
                 'article',
-                '2009'
+                '2009',
             ],
             ['@article{article,
   author  = {Peter Adams},
@@ -97,7 +97,7 @@ class ParserTest extends TestCase
                 'Adams',
                 'The title of the work',
                 'article',
-                '1993'
+                '1993',
             ],
             ['@book{book,
                   author    = {Peter Babington},
@@ -115,8 +115,8 @@ class ParserTest extends TestCase
                 'Babington',
                 'The title of the work',
                 'book',
-                1993
-            ]
+                1993,
+            ],
         ];
     }
 
@@ -180,7 +180,7 @@ class ParserTest extends TestCase
                   note         = {An optional note}
                 }',
                 ['The title of the work', 'The title of the work'],
-                ['chapter', 'chapter']
+                ['chapter', 'chapter'],
             ],
             [
                 '@manual{manual,
@@ -285,13 +285,13 @@ class ParserTest extends TestCase
                 [
                     'The title of the work', 'The title of the work', 'The title of the work', 'The title of the work',
                     'The title of the work', 'The title of the work', 'The title of the work', 'The title of the work',
-                    'The title of the work'
+                    'The title of the work',
                 ],
                 [
                     'book', 'thesis', 'unknown', 'thesis', 'paperConference', 'report', 'manuscript', 'conference',
-                    'pamphlet'
-                ]
-            ]
+                    'pamphlet',
+                ],
+            ],
         ];
     }
 

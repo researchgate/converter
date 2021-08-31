@@ -203,7 +203,7 @@ class Creator implements CreatorInterface
                     $person->getDroppingParticle(),
                     $person->getFamily() . ', ',
                     $person->getGiven(),
-                    $person->getSuffix()
+                    $person->getSuffix(),
                 ]
             );
 

@@ -87,7 +87,7 @@ class CreatorTest extends TestCase
 ]',
                 ['My Anonymous Paper', 'My Anonymous Speech'],
                 ['paper-conference', 'speech'],
-                false
+                false,
             ],
             ['[
     {
@@ -115,15 +115,15 @@ class CreatorTest extends TestCase
                     [
                         [
                             'family'    =>  'Davis',
-                            'given'     =>  'Jennifer J.'
-                        ]
-                    ]
+                            'given'     =>  'Jennifer J.',
+                        ],
+                    ],
                 ],
                 [
                     [
-                        'year' => ' 2004'
-                    ]
-                ]
+                        'year' => ' 2004',
+                    ],
+                ],
             ],
             ['[
     {
@@ -297,12 +297,12 @@ class CreatorTest extends TestCase
 ]',
             [
                 'BookA', 'BookB', 'BookC', 'BookD', 'BookE', 'BookF', 'BookG', 'BookH', 'BookI', 'BookJ', 'BookK',
-                'BookL'
+                'BookL',
             ],
             [
                 'article-newspaper', 'article-journal', 'entry-dictionary', 'entry-encyclopedia', 'motion_picture',
                 'musical_score', 'post-weblog', 'personal_communication', 'review-book', 'article-magazine', 'entry',
-                'legal_case'
+                'legal_case',
             ],
             false,
             false,
@@ -310,9 +310,9 @@ class CreatorTest extends TestCase
                 [
                     'year' => 1998,
                     'day'   =>  10,
-                    'month' =>  4
-                ]
-            ]]
+                    'month' =>  4,
+                ],
+            ], ],
         ];
     }
 

@@ -59,8 +59,8 @@ EP  - 822
 JO  - Annalen der Physik
 T1  - Die Grundlage der allgemeinen Relativitätstheorie
 VL  - 49
-ER  - '
-             ]
+ER  - ',
+             ],
          ];
      }
 }

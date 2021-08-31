@@ -72,8 +72,8 @@ series = {5},
 address = {The address of the publisher},
 organization = {The organization},
 booktitle = {The title of the book}
-}'
-            ]
+}',
+            ],
         ];
     }
 

@@ -73,7 +73,7 @@ class Parser implements ParserInterface
                 'speech'                    =>  'setSpeech',
                 'thesis'                    =>  'setThesis',
                 'treaty'                    =>  'setTreaty',
-                'webpage'                   =>  'setWebpage'
+                'webpage'                   =>  'setWebpage',
             ];
 
             $persons        =   [
@@ -88,7 +88,7 @@ class Parser implements ParserInterface
                 'original-author'       =>  'getOriginalAuthor',
                 'recipient'             =>  'getRecipient',
                 'reviewed-author'       =>  'getReviewedAuthor',
-                'translator'            =>  'getTranslator'
+                'translator'            =>  'getTranslator',
             ];
 
             $dates  =   [
@@ -96,7 +96,7 @@ class Parser implements ParserInterface
                 'event-date'    =>  'getEventDate',
                 'issued'        =>  'getIssued',
                 'original-date' =>  'getOriginalDate',
-                'submitted'     =>  'getSubmitted'
+                'submitted'     =>  'getSubmitted',
             ];
 
             $fields = [
@@ -139,7 +139,7 @@ class Parser implements ParserInterface
                 'title-short'                 => 'setTitleShort',
                 'URL'                         => 'setURL',
                 'version'                     => 'setVersion',
-                'yearSuffix'                  => 'setYearSuffix'
+                'yearSuffix'                  => 'setYearSuffix',
             ];
 
             foreach ($json as $record) {
@@ -218,7 +218,7 @@ class Parser implements ParserInterface
             'given'                 =>  'setGiven',
             'dropping-particle'     =>  'setDroppingParticle',
             'non-dropping-particle' =>  'setNonDroppingParticle',
-            'suffix'                =>  'setSuffix'
+            'suffix'                =>  'setSuffix',
         ];
 
         foreach ($persons as $data) {
