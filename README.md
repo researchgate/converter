@@ -1,6 +1,6 @@
 ## Converter
 
-[![Build Status](https://travis-ci.com/researchgate/converter.svg?branch=main)](https://travis-ci.com/researchgate/converter)
+[![Build Status](https://github.com/researchgate/converter/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/researchgate/converter/actions/workflows/ci.yaml)
 
 **Forked from [geissler/converter](https://github.com/geissler/converter).** Thank you for your amazing contributions 🙏.
 
