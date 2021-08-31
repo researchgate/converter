@@ -16,13 +16,13 @@ use Geissler\Converter\Model\Entries;
  */
 abstract class StandardAbstract implements FormattingStandard
 {
-    /** @var \Geissler\Converter\Model\Entries */
+    /** @var \Geissler\Converter\Model\Entries|null */
     private $entries;
     /** @var string */
     private $data;
-    /** @var \Geissler\Converter\Interfaces\ParserInterface */
+    /** @var \Geissler\Converter\Interfaces\ParserInterface|null */
     private $parser;
-    /** @var \Geissler\Converter\Interfaces\CreatorInterface */
+    /** @var \Geissler\Converter\Interfaces\CreatorInterface|null */
     private $creator;
 
     /**
