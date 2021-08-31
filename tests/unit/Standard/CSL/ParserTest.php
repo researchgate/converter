@@ -58,8 +58,8 @@ class ParserTest extends TestCase
 
     public function dataProviderParse()
     {
-        return array(
-            array(
+        return [
+            [
                 '[
     {
         "author": [
@@ -110,19 +110,19 @@ class ParserTest extends TestCase
         "type": "book"
     }
 ]',
-                array(
-                    array('Roe', 'Doe', 'Smith'),
-                    array('Roe', 'Noakes', 'Brown')
-                ),
-                array(
+                [
+                    ['Roe', 'Doe', 'Smith'],
+                    ['Roe', 'Noakes', 'Brown']
+                ],
+                [
                     1995, 1995
-                ),
-                array(
+                ],
+                [
                     'book', 'book'
-                ),
-                array('', '')
-            ),
-            array(
+                ],
+                ['', '']
+            ],
+            [
                 '[
           {
               "id": "ITEM-1",
@@ -147,18 +147,18 @@ class ParserTest extends TestCase
               "type": "article-journal"
           }
     ]',
-                array(
-                    array('Wallace-Hadrill')
-                ),
-                array(
+                [
+                    ['Wallace-Hadrill']
+                ],
+                [
                     '2011'
-                ),
-                array(
+                ],
+                [
                     'articleJournal'
-                ),
-                array('The monumental centre of Herculaneum. In search of the identities of the public buildings')
-            ),
-            array(
+                ],
+                ['The monumental centre of Herculaneum. In search of the identities of the public buildings']
+            ],
+            [
                 '[
     {
         "author": [
@@ -200,14 +200,14 @@ class ParserTest extends TestCase
         "type": "chapter"
     }
 ]',
-                array(
-                    array('Άγρας')
-                ),
-                array('1998'),
-                array('chapter'),
-                array('Ο Καρυωτάκης και οι Σάτιρες')
-            )
-        );
+                [
+                    ['Άγρας']
+                ],
+                ['1998'],
+                ['chapter'],
+                ['Ο Καρυωτάκης και οι Σάτιρες']
+            ]
+        ];
     }
 
     /**

@@ -41,8 +41,8 @@ class RISTest extends TestCase
 
      public function dataProviderParse()
      {
-         return array(
-             array('TY  - JOUR
+         return [
+             ['TY  - JOUR
 TI  - Die Grundlage der allgemeinen Relativitätstheorie
 AU  - Einstein, Albert
 PY  - 1916
@@ -60,7 +60,7 @@ JO  - Annalen der Physik
 T1  - Die Grundlage der allgemeinen Relativitätstheorie
 VL  - 49
 ER  - '
-             )
-         );
+             ]
+         ];
      }
 }

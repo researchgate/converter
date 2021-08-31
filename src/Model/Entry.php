@@ -202,7 +202,7 @@ class Entry
         $this->originalDate         =   new Dates();
         $this->submitted            =   new Dates();
         $this->pages                =   new Pages();
-        $this->keyword              =   array();
+        $this->keyword              =   [];
     }
 
     /**
@@ -1056,7 +1056,7 @@ class Entry
             if (preg_match_all('/([\p{L}\-]+)/u', $keyword, $match) !== 0) {
                 $keyword  =   $match[0];
             } else {
-                $keyword  =   array($keyword);
+                $keyword  =   [$keyword];
             }
         }
 

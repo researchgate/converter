@@ -222,8 +222,8 @@ class PARSEENTRIES
 // echo "**** ";print_r($array);echo "<BR>";
 		//$array = preg_split("/,\s*(\w+)\s*={1}\s*/U", $seg, PREG_SPLIT_DELIM_CAPTURE);
 		if(!array_key_exists(1, $array))
-			return array($array[0], FALSE);
-		return array($array[0], $array[1]);
+			return [$array[0], FALSE];
+		return [$array[0], $array[1]];
 	}
 // Extract and format fields
 	function reduceFields($oldString)
@@ -486,7 +486,7 @@ class PARSEENTRIES
 			$strings = $this->strings; 
 			// $this->strings is initialized with strings provided by user if they exists
 			// it is supposed that there are no substitutions to be made in the user strings, i.e., no # 
-			$this->strings = isset($this->userStrings) ? $this->userStrings : array() ; 
+			$this->strings = $this->userStrings ?? [] ; 
 			foreach($strings as $value) 
 			{
 				// changed 21/08/2004 G. Gardey
@@ -521,6 +521,6 @@ class PARSEENTRIES
 //			$this->strings = FALSE;
 //		if(empty($this->entries))
 //			$this->entries = FALSE;
-		return array($this->preamble, $this->strings, $this->entries, $this->undefinedStrings);
+		return [$this->preamble, $this->strings, $this->entries, $this->undefinedStrings];
 	}
 }

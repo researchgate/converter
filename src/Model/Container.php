@@ -20,7 +20,7 @@ abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
      */
     public function __construct()
     {
-        $this->data =   array();
+        $this->data =   [];
     }
 
     /**
@@ -63,7 +63,7 @@ abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
      */
     public function offsetGet($offset)
     {
-        return isset($this->data[$offset]) ? $this->data[$offset] : null;
+        return $this->data[$offset] ?? null;
     }
 
     /**

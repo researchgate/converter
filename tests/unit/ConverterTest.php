@@ -36,8 +36,8 @@ class ConverterTest extends TestCase
 
     public function dataProviderForConvert()
     {
-        return array(
-            array(
+        return [
+            [
                 new CSL('[
       {
           "id": "ITEM-1",
@@ -77,8 +77,8 @@ pages = {121-160},
 title = {The monumental centre of Herculaneum. In search of the identities of the public buildings},
 booktitle = {Journal of Roman archaeology}
 }'
-            ),
-            array(
+            ],
+            [
                 new RIS('TY  - JOUR
 TI  - Die Grundlage der allgemeinen Relativitätstheorie
 AU  - Einstein, Albert
@@ -96,8 +96,8 @@ pages = {769-822},
 title = {Die Grundlage der allgemeinen Relativitätstheorie},
 volume = {49}
 }'
-            ),
-            array(
+            ],
+            [
                 new BibTeX('@article{article,
 author = {Einstein, Albert},
 year = {1916},
@@ -107,8 +107,8 @@ volume = {49}
 }'),
                 new CSL(),
                 '[{"type":"article","author":[{"family":"Einstein","given":"Albert"}],"issued":[{"year":"1916"}],"page":"769-822","page-first":"769","citation-label":"article","title":"Die Grundlage der allgemeinen Relativit\u00e4tstheorie"}]'
-            )
-        );
+            ]
+        ];
     }
 
     /**

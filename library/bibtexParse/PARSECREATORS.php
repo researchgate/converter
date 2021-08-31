@@ -44,7 +44,7 @@ class PARSECREATORS
 		foreach($authorArray as $value)
 		{
 			$appellation = $prefix = $surname = $firstname = $initials = '';
-			$this->prefix = array();
+			$this->prefix = [];
 			$author = explode(",", preg_replace("/\s{2,}/", ' ', trim($value)));
 			$size = sizeof($author);
 // No commas therefore something like Mark Grimshaw, Mark Nicholas Grimshaw, M N Grimshaw, Mark N. Grimshaw
@@ -87,7 +87,7 @@ class PARSECREATORS
 			if(!empty($this->prefix))
 				$prefix = join(' ', $this->prefix);
 			$surname = $surname . ' ' . $appellation;
-			$creators[] = array("$firstname", "$initials", "$surname", "$prefix");
+			$creators[] = ["$firstname", "$initials", "$surname", "$prefix"];
 		}
 		if(isset($creators))
 			return $creators;
@@ -115,7 +115,7 @@ class PARSECREATORS
 		}
 		if(isset($firstnameArray))
 			$firstname = join(" ", $firstnameArray);
-		return array($firstname, $initials);
+		return [$firstname, $initials];
 	}
 // surname may have title such as 'den', 'von', 'de la' etc. - characterised by first character lowercased.  Any 
 // uppercased part means lowercased parts following are part of the surname (e.g. Van den Bussche)
@@ -139,9 +139,9 @@ class PARSECREATORS
 		if(isset($prefix))
 		{
 			$prefix = join(" ", $prefix);
-			return array($surname, $prefix);
+			return [$surname, $prefix];
 		}
-		return array($surname, FALSE);
+		return [$surname, FALSE];
 	}
 }
 ?>

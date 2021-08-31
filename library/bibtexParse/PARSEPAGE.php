@@ -35,9 +35,9 @@ class PARSEPAGE
 			return $this->return;
 // else, return first number we can find
 		if(preg_match("/(\d+|[ivx]+)/i", $item, $array))
-			return array($array[1], FALSE);
+			return [$array[1], FALSE];
 // No valid page numbers found
-		return array(FALSE, FALSE);;
+		return [FALSE, FALSE];;
 	}
 // "77--99" or '-'type?
 	function type1($item)
@@ -55,9 +55,9 @@ class PARSEPAGE
 			else
 				$end = strtolower(trim($array[1]));
 			if($end && !$start)
-				$this->return = array($end, $start);
+				$this->return = [$end, $start];
 			else
-				$this->return = array($start, $end);
+				$this->return = [$start, $end];
 			return TRUE;
 		}
 		return FALSE;

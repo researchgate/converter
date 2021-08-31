@@ -216,7 +216,7 @@ class Parser implements ParserInterface
                 }
             }
 
-            $mapper =   array(
+            $mapper =   [
                 'title'             =>  'setTitle',
                 'abstract'          =>  'setAbstract',
                 'volume'            =>  'setVolume',
@@ -236,7 +236,7 @@ class Parser implements ParserInterface
                 'shorttitle'        =>  'setTitleShort',
                 'keywords'          =>  'setKeyword',
                 'LCCN'              =>  'setCallNumber'
-            );
+            ];
 
             foreach ($mapper as $key => $method) {
                 if (isset($data[$i][$key]) == true && $data[$i][$key] != '') {

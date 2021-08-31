@@ -38,7 +38,7 @@ class Parser implements ParserInterface
         $json   =   json_decode($data, true);
 
         if (is_array($json) == true) {
-            $types  =   array(
+            $types  =   [
                 'article'                   =>  'setArticle',
                 'article-magazine'          =>  'setArticleMagazine',
                 'article-newspaper'         =>  'setArticleNewspaper',
@@ -74,9 +74,9 @@ class Parser implements ParserInterface
                 'thesis'                    =>  'setThesis',
                 'treaty'                    =>  'setTreaty',
                 'webpage'                   =>  'setWebpage'
-            );
+            ];
 
-            $persons        =   array(
+            $persons        =   [
                 'author'                =>  'getAuthor',
                 'collection-editor'     =>  'getCollectionEditor',
                 'container-author'      =>  'getContainerAuthor',
@@ -89,17 +89,17 @@ class Parser implements ParserInterface
                 'recipient'             =>  'getRecipient',
                 'reviewed-author'       =>  'getReviewedAuthor',
                 'translator'            =>  'getTranslator'
-            );
+            ];
 
-            $dates  =   array(
+            $dates  =   [
                 'accessed'      =>  'getAccessed',
                 'event-date'    =>  'getEventDate',
                 'issued'        =>  'getIssued',
                 'original-date' =>  'getOriginalDate',
                 'submitted'     =>  'getSubmitted'
-            );
+            ];
 
-            $fields = array(
+            $fields = [
                 'abstract'                    => 'setAbstract',
                 'annote'                      => 'setAnnote',
                 'archive'                     => 'setArchive',
@@ -140,7 +140,7 @@ class Parser implements ParserInterface
                 'URL'                         => 'setURL',
                 'version'                     => 'setVersion',
                 'yearSuffix'                  => 'setYearSuffix'
-            );
+            ];
 
             foreach ($json as $record) {
                 $this->entry    =   new Entry();
@@ -213,13 +213,13 @@ class Parser implements ParserInterface
      */
     private function createPerson(array $persons, string $method): void
     {
-        $mapper =   array(
+        $mapper =   [
             'family'                =>  'setFamily',
             'given'                 =>  'setGiven',
             'dropping-particle'     =>  'setDroppingParticle',
             'non-dropping-particle' =>  'setNonDroppingParticle',
             'suffix'                =>  'setSuffix'
-        );
+        ];
 
         foreach ($persons as $data) {
             $person   =   new Person();
@@ -252,7 +252,7 @@ class Parser implements ParserInterface
             if (isset($data[1]) == true || isset($data['month']) == true) {
                 $month  =   isset($data['month']) == true ? $data['month'] : $data[1];
 
-                if (in_array($month, array(1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12)) == true) {
+                if (in_array($month, [1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12]) == true) {
                     $date->setMonth($month);
                 }
             }
