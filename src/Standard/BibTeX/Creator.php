@@ -28,7 +28,7 @@ class Creator implements CreatorInterface
      */
     public function create(Entries $data)
     {
-        $mapper =   array(
+        $mapper =   [
             'title'             =>  'getTitle',
             'volume'            =>  'getVolume',
             'number'            =>  'getNumber',
@@ -47,11 +47,11 @@ class Creator implements CreatorInterface
             'keywords'          =>  'getKeyword',
             'LCCN'              =>  'getCallNumber',
             'doi'               =>  'getDoi',
-        );
+        ];
 
         foreach ($data as $entry) {
             /** @var \Geissler\Converter\Model\Entry $entry */
-            $data   =   array();
+            $data   =   [];
             $data[] =   $this->init($entry);
 
             // author
@@ -193,18 +193,18 @@ class Creator implements CreatorInterface
      */
     private function createPerson(Persons $persons)
     {
-        $return =   array();
+        $return =   [];
 
         foreach ($persons as $person) {
             /** @var \Geissler\Converter\Model\Person $person */
             $name   =   implode(
                 ' ',
-                array(
+                [
                     $person->getDroppingParticle(),
                     $person->getFamily() . ', ',
                     $person->getGiven(),
-                    $person->getSuffix()
-                )
+                    $person->getSuffix(),
+                ]
             );
 
             if ($name !== ' ,   ') {

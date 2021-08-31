@@ -29,11 +29,11 @@ class Creator implements CreatorInterface
         if (count($data) > 0) {
             foreach ($data as $entry) {
                 /** @var \Geissler\Converter\Model\Entry $entry */
-                $record =   array();
+                $record =   [];
 
                 $record['type'] =   $this->getType($entry->getType()->getType());
 
-                $persons        =   array(
+                $persons        =   [
                     'author'                =>  'getAuthor',
                     'collection-editor'     =>  'getCollectionEditor',
                     'container-author'      =>  'getContainerAuthor',
@@ -45,8 +45,8 @@ class Creator implements CreatorInterface
                     'original-author'       =>  'getOriginalAuthor',
                     'recipient'             =>  'getRecipient',
                     'reviewed-author'       =>  'getReviewedAuthor',
-                    'translator'            =>  'getTranslator'
-                );
+                    'translator'            =>  'getTranslator',
+                ];
                 foreach ($persons as $field => $getter) {
                     $person =   $this->createPerson($entry->$getter());
 
@@ -55,13 +55,13 @@ class Creator implements CreatorInterface
                     }
                 }
 
-                $dates  =   array(
+                $dates  =   [
                     'accessed'      =>  'getAccessed',
                     'event-date'    =>  'getEventDate',
                     'issued'        =>  'getIssued',
                     'original-date' =>  'getOriginalDate',
-                    'submitted'     =>  'getSubmitted'
-                );
+                    'submitted'     =>  'getSubmitted',
+                ];
                 foreach ($dates as $field => $getter) {
                     $date   =   $this->createDate($entry->$getter());
 
@@ -87,7 +87,7 @@ class Creator implements CreatorInterface
                     $record['page-first'] =   $entry->getPages()->getStart();
                 }
 
-                $fields = array(
+                $fields = [
                     'abstract'                    => 'getAbstract',
                     'annote'                      => 'getAnnote',
                     'archive'                     => 'getArchive',
@@ -127,8 +127,8 @@ class Creator implements CreatorInterface
                     'title-short'                 => 'getTitleShort',
                     'URL'                         => 'getURL',
                     'version'                     => 'getVersion',
-                    'yearSuffix'                  => 'getYearSuffix'
-                );
+                    'yearSuffix'                  => 'getYearSuffix',
+                ];
 
                 foreach ($fields as $field => $getter) {
                     $value  =   $entry->$getter();
@@ -212,17 +212,17 @@ class Creator implements CreatorInterface
      */
     private function createPerson(Persons $persons)
     {
-        $data   =   array();
-        $mapper =   array(
+        $data   =   [];
+        $mapper =   [
             'family'                =>  'getFamily',
             'given'                 =>  'getGiven',
             'dropping-particle'     =>  'getDroppingParticle',
             'non-dropping-particle' =>  'getNonDroppingParticle',
-            'suffix'                =>  'getSuffix'
-        );
+            'suffix'                =>  'getSuffix',
+        ];
 
         foreach ($persons as $person) {
-            $entry  =   array();
+            $entry  =   [];
 
             foreach ($mapper as $key => $getter) {
                 if ($person->$getter() !== '') {
@@ -244,11 +244,11 @@ class Creator implements CreatorInterface
      */
     private function createDate(Dates $dates)
     {
-        $data   =   array();
+        $data   =   [];
 
         foreach ($dates as $date) {
             /** @var \Geissler\Converter\Model\Date $date */
-            $entry  =   array();
+            $entry  =   [];
             if ($date->getYear() !== null) {
                 $entry['year']  =   $date->getYear();
             }

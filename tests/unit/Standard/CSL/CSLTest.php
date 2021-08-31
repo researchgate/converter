@@ -42,8 +42,8 @@ class CSLTest extends TestCase
 
     public function dataProviderParse()
     {
-        return array(
-            array('[
+        return [
+            ['[
     {
         "id": "ITEM-1",
         "issued": {
@@ -57,7 +57,7 @@ class CSLTest extends TestCase
         },
         "title": "BookA"
     }
-]')
-        );
+]'],
+        ];
     }
 }

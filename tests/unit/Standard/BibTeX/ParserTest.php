@@ -61,8 +61,8 @@ class ParserTest extends TestCase
 
     public function dataProviderForParseOne()
     {
-        return array(
-            array('@Article{Granino1561,
+        return [
+            ['@Article{Granino1561,
   author = "Granino Cecere, Maria Grazia",
   title = "Pecunia sacra e proprietà fondiarai nei santuari dell\'Italia centrale - Il contributo dell\'epigrafia",
   shorttitle = "",
@@ -81,9 +81,9 @@ class ParserTest extends TestCase
                 'Granino Cecere',
                 "Pecunia sacra e proprietà fondiarai nei santuari dell'Italia centrale - Il contributo dell'epigrafia",
                 'article',
-                '2009'
-            ),
-            array('@article{article,
+                '2009',
+            ],
+            ['@article{article,
   author  = {Peter Adams},
   title   = {The title of the work},
   journal = {The name of the journal},
@@ -97,9 +97,9 @@ class ParserTest extends TestCase
                 'Adams',
                 'The title of the work',
                 'article',
-                '1993'
-            ),
-            array('@book{book,
+                '1993',
+            ],
+            ['@book{book,
                   author    = {Peter Babington},
                   title     = {The title of the work},
                   publisher = {The name of the publisher},
@@ -115,9 +115,9 @@ class ParserTest extends TestCase
                 'Babington',
                 'The title of the work',
                 'book',
-                1993
-            )
-        );
+                1993,
+            ],
+        ];
     }
 
     /**
@@ -146,8 +146,8 @@ class ParserTest extends TestCase
 
     public function dataProviderForParseMultiple()
     {
-        return array(
-            array('
+        return [
+            ['
                 @inbook{inbook,
                       author       = {Peter Eston},
                       title        = {The title of the work},
@@ -179,10 +179,10 @@ class ParserTest extends TestCase
                   month        = 7,
                   note         = {An optional note}
                 }',
-                array('The title of the work', 'The title of the work'),
-                array('chapter', 'chapter')
-            ),
-            array(
+                ['The title of the work', 'The title of the work'],
+                ['chapter', 'chapter'],
+            ],
+            [
                 '@manual{manual,
                   title        = {The title of the work},
                   author       = {Peter Gainsford},
@@ -282,17 +282,17 @@ class ParserTest extends TestCase
                 }
 
                 ',
-                array(
+                [
                     'The title of the work', 'The title of the work', 'The title of the work', 'The title of the work',
                     'The title of the work', 'The title of the work', 'The title of the work', 'The title of the work',
-                    'The title of the work'
-                ),
-                array(
+                    'The title of the work',
+                ],
+                [
                     'book', 'thesis', 'unknown', 'thesis', 'paperConference', 'report', 'manuscript', 'conference',
-                    'pamphlet'
-                )
-            )
-        );
+                    'pamphlet',
+                ],
+            ],
+        ];
     }
 
     /**

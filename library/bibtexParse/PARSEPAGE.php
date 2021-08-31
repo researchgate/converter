@@ -16,7 +16,7 @@ http://bibliophile.sourceforge.net*/
 class PARSEPAGE
 {
 // Constructor
-	function __construct()
+	public function __construct()
 	{
 	}
 // Create page arrays from bibtex input.
@@ -28,19 +28,19 @@ class PARSEPAGE
 //	73, 89,103"
 // Currently, PARSEPAGE will take 1/, 2/ and 3/ above as page_start and page_end and, in the other cases, will accept
 // the first valid number it finds from the left as page_start setting page_end to NULL
-	function init($item)
+	public function init($item)
 	{
 		$item = trim($item);
 		if($this->type1($item))
 			return $this->return;
 // else, return first number we can find
 		if(preg_match("/(\d+|[ivx]+)/i", $item, $array))
-			return array($array[1], FALSE);
+			return [$array[1], FALSE];
 // No valid page numbers found
-		return array(FALSE, FALSE);;
+		return [FALSE, FALSE];;
 	}
 // "77--99" or '-'type?
-	function type1($item)
+	public function type1($item)
 	{
 		$start = $end = FALSE;
 		$array = preg_split("/--|-/", $item);
@@ -55,9 +55,9 @@ class PARSEPAGE
 			else
 				$end = strtolower(trim($array[1]));
 			if($end && !$start)
-				$this->return = array($end, $start);
+				$this->return = [$end, $start];
 			else
-				$this->return = array($start, $end);
+				$this->return = [$start, $end];
 			return TRUE;
 		}
 		return FALSE;

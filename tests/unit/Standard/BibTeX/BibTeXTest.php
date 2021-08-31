@@ -41,8 +41,8 @@ class BibTeXTest extends TestCase
 
     public function dataProviderRun()
     {
-        return array(
-            array('@conference{conference,
+        return [
+            ['@conference{conference,
   author       = {Peter Draper},
   title        = {The title of the work},
   booktitle    = {The title of the book},
@@ -72,9 +72,9 @@ series = {5},
 address = {The address of the publisher},
 organization = {The organization},
 booktitle = {The title of the book}
-}'
-            )
-        );
+}',
+            ],
+        ];
     }
 
     /**

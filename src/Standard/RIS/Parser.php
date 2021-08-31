@@ -41,21 +41,21 @@ class Parser implements ParserInterface
         if (is_array($records) === true && count($records) > 0) {
             $this->entries  =   new Entries();
 
-            $authors    =   array(
+            $authors    =   [
                 'A1'    =>  'getAuthor',
                 'A2'    =>  'getEditor',
                 'A4'    =>  'getTranslator',
                 'AU'    =>  'getAuthor',
-                'TA'    =>  'getOriginalAuthor'
-            );
+                'TA'    =>  'getOriginalAuthor',
+            ];
 
-            $dates  =   array(
+            $dates  =   [
                 'Y1'    =>  'getIssued',
                 'PY'    =>  'getIssued',
-                'Y2'    =>  'getAccessed'
-            );
+                'Y2'    =>  'getAccessed',
+            ];
 
-            $fields = array(
+            $fields = [
                 'N2'    => 'setAbstract',
                 'ID '   => 'setCitationLabel',
                 'JA'    => 'setCollectionTitle',
@@ -86,8 +86,8 @@ class Parser implements ParserInterface
                 'RI'    => 'setReviewedTitle',
                 'SE'    => 'setVersion',
                 'ST'    => 'setTitleShort',
-                'RP'    => 'setReprintEdition'
-            );
+                'RP'    => 'setReprintEdition',
+            ];
 
             foreach ($records as $record) {
                 $entry  =   $this->getType(new Entry(), $record['TY'][0]);

@@ -29,21 +29,21 @@ class Creator implements CreatorInterface
     public function create(Entries $data)
     {
         if (count($data) > 0) {
-            $authors    =   array(
+            $authors    =   [
                 //'A1'    =>  'getAuthor',
                 'A2'    =>  'getEditor',
                 'A4'    =>  'getTranslator',
                 'AU'    =>  'getAuthor',
-                'TA'    =>  'getOriginalAuthor'
-            );
+                'TA'    =>  'getOriginalAuthor',
+            ];
 
-            $dates  =   array(
+            $dates  =   [
                 'Y1'    =>  'getIssued',
                 'PY'    =>  'getIssued',
-                'Y2'    =>  'getAccessed'
-            );
+                'Y2'    =>  'getAccessed',
+            ];
 
-            $fields = array(
+            $fields = [
                 'N2'    => 'getAbstract',
                 'ID '   => 'getCitationLabel',
                 'JA'    => 'getCollectionTitle',
@@ -74,28 +74,28 @@ class Creator implements CreatorInterface
                 'ST'    => 'getTitleShort',
                 'RP'    => 'getReprintEdition',
                 'KW'    => 'getKeyword',
-            );
+            ];
 
-            $articleFields = array(
+            $articleFields = [
                 'JO'    => 'getJournal',
-            );
+            ];
 
-            $identical  =   array(
-                'T1'    =>  array('TI', 'CT'),
-                'PY'    =>  array('Y1')
-            );
+            $identical  =   [
+                'T1'    =>  ['TI', 'CT'],
+                'PY'    =>  ['Y1'],
+            ];
 
             foreach ($data as $entry) {
                 /** @var \Geissler\Converter\Model\Entry $entry */
-                $record =   array();
+                $record =   [];
 
                 // type
-                $record['TY']   =   array($this->getType($entry->getType()->getType()));
+                $record['TY']   =   [$this->getType($entry->getType()->getType())];
 
                 // authors
                 foreach ($authors as $field => $method) {
                     if (count($entry->$method()) > 0) {
-                        $record[$field] =   array();
+                        $record[$field] =   [];
 
                         foreach ($entry->$method() as $person) {
                             /** @var \Geissler\Converter\Model\Person $person */
@@ -111,23 +111,23 @@ class Creator implements CreatorInterface
                         $value  =   $this->getDate($date[0]);
 
                         if ($value !== null) {
-                            $record[$field] =   array($this->getDate($date[0]));
+                            $record[$field] =   [$this->getDate($date[0])];
                         }
                     }
                 }
 
                 // pages
                 if ($entry->getPages()->getRange() !== null) {
-                    $record['SP']   =   array($entry->getPages()->getRange());
+                    $record['SP']   =   [$entry->getPages()->getRange()];
                 } elseif ($entry->getPages()->getStart() !== null && $entry->getPages()->getEnd() !== null) {
-                    $record['SP']   =   array($entry->getPages()->getStart());
-                    $record['EP']   =   array($entry->getPages()->getEnd());
+                    $record['SP']   =   [$entry->getPages()->getStart()];
+                    $record['EP']   =   [$entry->getPages()->getEnd()];
                 } elseif ($entry->getPages()->getStart() !== null) {
-                    $record['SP']   =   array($entry->getPages()->getStart());
+                    $record['SP']   =   [$entry->getPages()->getStart()];
                 } elseif ($entry->getPages()->getEnd() !== null) {
-                    $record['EP']   =   array($entry->getPages()->getEnd());
+                    $record['EP']   =   [$entry->getPages()->getEnd()];
                 } elseif ($entry->getPages()->getTotal() !== null) {
-                    $record['SP']   =   array($entry->getPages()->getTotal());
+                    $record['SP']   =   [$entry->getPages()->getTotal()];
                 }
 
                 // field
@@ -137,7 +137,7 @@ class Creator implements CreatorInterface
                         if (is_array($value) == true) {
                             $record[$field] =   $value;
                         } else {
-                            $record[$field] =   array($value);
+                            $record[$field] =   [$value];
                         }
                     }
                 }
@@ -149,7 +149,7 @@ class Creator implements CreatorInterface
                         if (is_array($value) == true) {
                             $record[$field] =   $value;
                         } else {
-                            $record[$field] =   array($value);
+                            $record[$field] =   [$value];
                         }
                     }
                 }
@@ -299,7 +299,7 @@ class Creator implements CreatorInterface
      */
     private function getPerson(Person $person)
     {
-        $return =   array($person->getFamily());
+        $return =   [$person->getFamily()];
 
         if ($person->getGiven() !== '') {
             $return[]   =   $person->getGiven();

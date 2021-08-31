@@ -26,10 +26,10 @@ http://bibliophile.sourceforge.net
 class PARSEMONTH
 {
 // Constructor
-	function __construct()
+	public function __construct()
 	{
 	}
-	function init($monthField)
+	public function init($monthField)
 	{
 		$startMonth = $this->startDay = $endMonth = $this->endDay = FALSE;
 		$date = explode("#", $monthField);
@@ -56,10 +56,10 @@ class PARSEMONTH
 		}
 		if($this->endDay && !$endMonth)
 			$endMonth = $startMonth;
-		return array($startMonth, $this->startDay, $endMonth, $this->endDay);
+		return [$startMonth, $this->startDay, $endMonth, $this->endDay];
 	}
 // extract day of month from field
-	function parseDay($dayField)
+	public function parseDay($dayField)
 	{
 		preg_match("/([0-9]+).*([0-9]+)|([0-9]+)/", $dayField, $array);
 		if(array_key_exists(3, $array))
@@ -78,9 +78,9 @@ class PARSEMONTH
 		}
 	}
 // Convert month to long name
-	function monthToLongName()
+	public function monthToLongName()
 	{
-		return array(
+		return [
 				1	=>	'January',
 				2	=>	'February',
 				3	=>	'March',
@@ -93,12 +93,12 @@ class PARSEMONTH
 				10	=>	'October',
 				11	=>	'November',
 				12	=>	'December',
-			);
+			];
 	}
 // Convert month to short name
-	function monthToShortName()
+	public function monthToShortName()
 	{
-		return array(
+		return [
 				1	=>	'Jan',
 				2	=>	'Feb',
 				3	=>	'Mar',
@@ -111,7 +111,7 @@ class PARSEMONTH
 				10	=>	'Oct',
 				11	=>	'Nov',
 				12	=>	'Dec',
-			);
+			];
 	}
 }
 ?>

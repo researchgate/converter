@@ -70,8 +70,8 @@ class CreatorTest extends TestCase
 
     public function dataProviderForCreate()
     {
-        return array(
-            array('[
+        return [
+            ['[
     {
         "event": "Big Event",
         "id": "ITEM-1",
@@ -85,11 +85,11 @@ class CreatorTest extends TestCase
         "type": "speech"
     }
 ]',
-                array('My Anonymous Paper', 'My Anonymous Speech'),
-                array('paper-conference', 'speech'),
-                false
-            ),
-            array('[
+                ['My Anonymous Paper', 'My Anonymous Speech'],
+                ['paper-conference', 'speech'],
+                false,
+            ],
+            ['[
     {
 		"id": "ITEM-1",
 		"title":"Men of Taste: Gender and Authority in the French Culinary Trades, 1730-1830",
@@ -109,23 +109,23 @@ class CreatorTest extends TestCase
 		"type": "thesis"
 	}
 ]',
-                array('Men of Taste: Gender and Authority in the French Culinary Trades, 1730-1830'),
-                array('thesis'),
-                array(
-                    array(
-                        array(
+                ['Men of Taste: Gender and Authority in the French Culinary Trades, 1730-1830'],
+                ['thesis'],
+                [
+                    [
+                        [
                             'family'    =>  'Davis',
-                            'given'     =>  'Jennifer J.'
-                        )
-                    )
-                ),
-                array(
-                    array(
-                        'year' => ' 2004'
-                    )
-                )
-            ),
-            array('[
+                            'given'     =>  'Jennifer J.',
+                        ],
+                    ],
+                ],
+                [
+                    [
+                        'year' => ' 2004',
+                    ],
+                ],
+            ],
+            ['[
     {
         "id": "ITEM-1",
         "issued": {
@@ -295,25 +295,25 @@ class CreatorTest extends TestCase
         "type": "legal_case"
     }
 ]',
-            array(
+            [
                 'BookA', 'BookB', 'BookC', 'BookD', 'BookE', 'BookF', 'BookG', 'BookH', 'BookI', 'BookJ', 'BookK',
-                'BookL'
-            ),
-            array(
+                'BookL',
+            ],
+            [
                 'article-newspaper', 'article-journal', 'entry-dictionary', 'entry-encyclopedia', 'motion_picture',
                 'musical_score', 'post-weblog', 'personal_communication', 'review-book', 'article-magazine', 'entry',
-                'legal_case'
-            ),
+                'legal_case',
+            ],
             false,
             false,
-            array(
-                array(
+            [
+                [
                     'year' => 1998,
                     'day'   =>  10,
-                    'month' =>  4
-                )
-            ))
-        );
+                    'month' =>  4,
+                ],
+            ], ],
+        ];
     }
 
     /**

@@ -88,9 +88,9 @@ class ParserTest extends TestCase
 
     public function dataProviderForParse()
     {
-        return array(
-            array(
-                array(
+        return [
+            [
+                [
                     'input' =>  'TY  - JOUR
 TI  - Die Grundlage der allgemeinen Relativitätstheorie
 AU  - Einstein, Albert
@@ -100,20 +100,20 @@ EP  - 822
 JO  - Annalen der Physik
 VL  - 49
 ER  - ',
-                    'authors'   =>  array(
-                        array(
+                    'authors'   =>  [
+                        [
                             'family'    =>  'Einstein',
-                            'given'     =>  'Albert'
-                        )
-                    ),
+                            'given'     =>  'Albert',
+                        ],
+                    ],
                     'year'      =>  1916,
                     'title'     =>  'Die Grundlage der allgemeinen Relativitätstheorie',
                     'type'      =>  'articleJournal',
-                    'container' =>  'Annalen der Physik'
-                ),
-            ),
-            array(
-                array(
+                    'container' =>  'Annalen der Physik',
+                ],
+            ],
+            [
+                [
                     'input' =>  'TY  - JOUR
 AU  - Shannon,Claude E.
 PY  - 1948/07//
@@ -125,22 +125,22 @@ VL  - 27
 KW  - First
 KW  - Second
 ER  - ',
-                    'authors'   =>  array(
-                        array(
+                    'authors'   =>  [
+                        [
                             'family'    =>  'Shannon',
-                            'given'     =>  'Claude E.'
-                        )
-                    ),
+                            'given'     =>  'Claude E.',
+                        ],
+                    ],
                     'year'      =>  1948,
                     'title'     =>  'A Mathematical Theory of Communication',
                     'type'      =>  'articleJournal',
                     'container' =>  'Bell System Technical Journal',
                     'month'     =>  '07',
-                    'keyword'   =>  array('First', 'Second')
-                )
-            ),
-            array(
-                array(
+                    'keyword'   =>  ['First', 'Second'],
+                ],
+            ],
+            [
+                [
                     'input' =>  'TY  - JOUR
 AU  - Baldwin,S.A.
 AU  - Fugaccia,I.
@@ -162,40 +162,40 @@ KW  - hippocampus
 KW  - rat
 DO  - DOI:10xxxxxxxx
 ER  -  ',
-                    'authors'   =>  array(
-                        array(
+                    'authors'   =>  [
+                        [
                             'family'    =>  'Baldwin',
-                            'given'     =>  'S.A.'
-                        ),
-                        array(
+                            'given'     =>  'S.A.',
+                        ],
+                        [
                             'family'    =>  'Fugaccia',
-                            'given'     =>  'I.'
-                        ),
-                        array(
+                            'given'     =>  'I.',
+                        ],
+                        [
                             'family'    =>  'Brown',
-                            'given'     =>  'D.R.'
-                        ),
-                        array(
+                            'given'     =>  'D.R.',
+                        ],
+                        [
                             'family'    =>  'Brown',
-                            'given'     =>  'L.V.'
-                        ),
-                        array(
+                            'given'     =>  'L.V.',
+                        ],
+                        [
                             'family'    =>  'Scheff',
-                            'given'     =>  'S.W.'
-                        )
+                            'given'     =>  'S.W.',
+                        ],
 
-                    ),
+                    ],
                     'year'      =>  1996,
                     'title'     =>  'Blood-brain barrier breach following cortical contusion in the rat',
                     'type'      =>  'articleJournal',
-                    'keyword'   =>  array(
+                    'keyword'   =>  [
                         'cortical', 'contusion', 'blood-brain', 'barrier', 'horseradish', 'peroxidase',
-                        'hippocampus', 'rat'
-                    )
-                )
-            ),
-            array(
-                array(
+                        'hippocampus', 'rat',
+                    ],
+                ],
+            ],
+            [
+                [
                     'input' =>  'TY  - CHAP
 AU  - Franks,L.M.
 TI  - Preface by an AIDS Victim
@@ -213,29 +213,29 @@ KW  - AIDS
 DO  - DOI: 10.xxxxxxxxx
 SN  - 0-679-40110-5
 ER  - ',
-                    'authors'   =>  array(
-                        array(
+                    'authors'   =>  [
+                        [
                             'family'    =>  'Franks',
-                            'given'     =>  'L.M.'
-                        )
-                    ),
-                    'editors'   =>  array(
-                        array(
+                            'given'     =>  'L.M.',
+                        ],
+                    ],
+                    'editors'   =>  [
+                        [
                             'family'    =>  'Jackson',
-                            'given'     =>  'H.'
-                        ),
-                        array(
+                            'given'     =>  'H.',
+                        ],
+                        [
                             'family'    =>  'Weisl',
-                            'given'     =>  'R.'
-                        )
-                    ),
+                            'given'     =>  'R.',
+                        ],
+                    ],
                     'year'      =>  1991,
                     'title'     =>  'Preface by an AIDS Victim',
                     'type'      =>  'chapter',
-                )
-            ),
-            array(
-                array(
+                ],
+            ],
+            [
+                [
                     'input' =>  'TY  - THES
 A1  - Rieger, Anna-Katharina
 T1  - Heiligtümer in Ostia
@@ -255,16 +255,16 @@ KW  -  Ceres Fortuna Gelesen Ostia Religion Spes Venus
 ER  - ',
                     'title'     =>  'Heiligtümer in Ostia',
                     'type'      =>  'thesis',
-                    'authors'   =>  array(
-                        array(
+                    'authors'   =>  [
+                        [
                             'family'    =>  'Rieger',
-                            'given'     =>  'Anna-Katharina'
-                        )
-                    ),
-                    'year'      =>  '2004'
-                )
-            )
-        );
+                            'given'     =>  'Anna-Katharina',
+                        ],
+                    ],
+                    'year'      =>  '2004',
+                ],
+            ],
+        ];
     }
 
     /**
@@ -298,8 +298,8 @@ ER  - ',
 
     public function dataProviderForMultiple()
     {
-        return array(
-            array(
+        return [
+            [
                 'TY  - BOOK
 A1  - Iossif, Panagiotis P., Jr
 T1  - More than men, less than gods
@@ -336,15 +336,15 @@ SP  - 330-336
 KW  -  Geschichte NochZuLesen Sozial
 
 ER  - ',
-                array('More than men, less than gods', 'Rez. A. Wallace-Hadrill, Rome\'s Cultural Revolution (Cambridge 2008)'),
-                array('book', 'articleJournal'),
-                array('Iossif', 'Kellum'),
-                array(
-                    array('Kaiser', 'Kaiserzeit', 'Kult', 'NochZuLesen', 'Religion'),
-                    array('Geschichte', 'NochZuLesen', 'Sozial')
-                )
-            )
-        );
+                ['More than men, less than gods', 'Rez. A. Wallace-Hadrill, Rome\'s Cultural Revolution (Cambridge 2008)'],
+                ['book', 'articleJournal'],
+                ['Iossif', 'Kellum'],
+                [
+                    ['Kaiser', 'Kaiserzeit', 'Kult', 'NochZuLesen', 'Religion'],
+                    ['Geschichte', 'NochZuLesen', 'Sozial'],
+                ],
+            ],
+        ];
     }
 
     /**
@@ -365,8 +365,8 @@ ER  - ',
 
     public function dataProviderTypes()
     {
-        return array(
-            array(
+        return [
+            [
                 'TY  - JOUR
 A1  - Kellum, B
 
@@ -486,14 +486,14 @@ TY  - SLID
 A1  - Kellum, B
 
 ER  -',
-                array(
+                [
                     'articleJournal', 'abstract', 'motionPicture', 'graphic', 'bill', 'book', 'legalCase', 'chapter',
                     'catalog', 'dataset', 'webpage', 'articleMagazine', 'musicalScore', 'articleNewspaper', 'pamphlet',
                     'personalCommunication', 'report', 'manuscript', 'patent', 'video', 'software', 'map', 'slide',
-                    'unknown'
-                )
-            )
-        );
+                    'unknown',
+                ],
+            ],
+        ];
     }
 
     /**

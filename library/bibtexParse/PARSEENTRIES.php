@@ -145,18 +145,18 @@ class PARSEENTRIES
     public $parseFile = true;
 
 // Open bib file
-	function openBib($file)
+	public function openBib($file)
 	{
 		if(!is_file($file))
 			die;
-		$this->fid = fopen ($file,'r');
+		$this->fid = fopen ($file, 'r');
 		$this->parseFile = TRUE;
 	}
 // Load a bibtex string to parse it
 	public function loadBibtexString($bibtex_string)
 	{
 		if(is_string($bibtex_string)) {
-			$this->bibtexString = explode("\n",$bibtex_string);
+			$this->bibtexString = explode("\n", $bibtex_string);
         } else {
             $this->bibtexString = $bibtex_string;
         }
@@ -166,17 +166,17 @@ class PARSEENTRIES
 	}
 
 // Set strings macro
-	function loadStringMacro($macro_array)
+	public function loadStringMacro($macro_array)
 	{
 		$this->userStrings = $macro_array;
 	}
 // Close bib file
-	function closeBib()
+	public function closeBib()
 	{
 		fclose($this->fid);
 	}
 // Get a non-empty line from the bib file or from the bibtexString
-	function getLine()
+	public function getLine()
 	{
 		if($this->parseFile)
 		{
@@ -204,16 +204,16 @@ class PARSEENTRIES
 	}
 // Extract value part of @string field enclosed by double-quotes or braces.
 // The string may be expanded with previously-defined strings
-	function extractStringValue($string) 
+	public function extractStringValue($string) 
 	{
 		// $string contains a end delimiter, remove it
-		$string = trim(substr($string,0,strlen($string)-1));
+		$string = trim(substr($string, 0, strlen($string)-1));
 		// remove delimiters and expand
 		$string = $this->removeDelimitersAndExpand($string);
 		return $string;
 	}
 // Extract a field
-	function fieldSplit($seg)
+	public function fieldSplit($seg)
 	{
 // echo "**** ";print_r($seg);echo "<BR>";
 		// handle fields like another-field = {}
@@ -222,23 +222,23 @@ class PARSEENTRIES
 // echo "**** ";print_r($array);echo "<BR>";
 		//$array = preg_split("/,\s*(\w+)\s*={1}\s*/U", $seg, PREG_SPLIT_DELIM_CAPTURE);
 		if(!array_key_exists(1, $array))
-			return array($array[0], FALSE);
-		return array($array[0], $array[1]);
+			return [$array[0], FALSE];
+		return [$array[0], $array[1]];
 	}
 // Extract and format fields
-	function reduceFields($oldString)
+	public function reduceFields($oldString)
 	{
 		// 03/05/2005 G. Gardey. Do not remove all occurences, juste one
 		// * correctly parse an entry ended by: somefield = {aValue}}
 		$lg = strlen($oldString);
 		if($oldString[$lg-1] == "}" || $oldString[$lg-1] == ")" || $oldString[$lg-1] == ",")
-			$oldString = substr($oldString,0,$lg-1);
+			$oldString = substr($oldString, 0, $lg-1);
 		// $oldString = rtrim($oldString, "}),");
 		$split = preg_split("/=/", $oldString, 2);
 		$string = $split[1];
 		while($string)
 		{
-			list($entry, $string) = $this->fieldSplit($string);
+			[$entry, $string] = $this->fieldSplit($string);
 			$values[] = $entry;
 		}
 		foreach($values as $value)
@@ -274,7 +274,7 @@ class PARSEENTRIES
 	}
 // Start splitting a bibtex entry into component fields.
 // Store the entry type and citation.
-	function fullSplit($entry)
+	public function fullSplit($entry)
 	{        
 		$matches = preg_split("/@(.*)[{(](.*),/U", $entry, 2, PREG_SPLIT_DELIM_CAPTURE); 
 		$this->entries[$this->count]['bibtexEntryType'] = strtolower(trim($matches[1]));
@@ -287,7 +287,7 @@ class PARSEENTRIES
 	}
 
 // Grab a complete bibtex entry
-	function parseEntry($entry)
+	public function parseEntry($entry)
 	{
 		$count = 0;
 		$lastLine = FALSE;
@@ -313,7 +313,7 @@ class PARSEENTRIES
 	}
 
 // Remove delimiters from a string
-	function removeDelimiters($string)
+	public function removeDelimiters($string)
 	{
 		if($string  && ($string[0] == "\""))
 		{
@@ -340,7 +340,7 @@ class PARSEENTRIES
 // This function works like explode('#',$val) but has to take into account whether
 // the character # is part of a string (i.e., is enclosed into "..." or {...} ) 
 // or defines a string concatenation as in @string{ "x # x" # ss # {xx{x}x} }
-	function explodeString($val)
+	public function explodeString($val)
 	{
 		$openquote = $bracelevel = $i = $j = 0; 
 		while ($i < strlen($val))
@@ -353,12 +353,12 @@ class PARSEENTRIES
 				$bracelevel--;
 			elseif ( $val[$i] == '#' && !$openquote && !$bracelevel )
 			{
-				$strings[] = substr($val,$j,$i-$j);
+				$strings[] = substr($val, $j, $i-$j);
 				$j=$i+1;
 			}
 			$i++;
 		}
-		$strings[] = substr($val,$j);
+		$strings[] = substr($val, $j);
 		return $strings;
 	}
 
@@ -369,7 +369,7 @@ class PARSEENTRIES
 //    but braces must also be balanced inside quotes! 
 //  * Inside quotes, to place the " character it is not sufficient 
 //    to simply escape with \": Quotes must be placed inside braces. 
-	function closingDelimiter($val,$delimitEnd)
+	public function closingDelimiter($val, $delimitEnd)
 	{
 //  echo "####>$delimitEnd $val<BR>";
 		$openquote = $bracelevel = $i = $j = 0; 
@@ -391,7 +391,7 @@ class PARSEENTRIES
 	}
 
 // Remove enclosures around entry field values.  Additionally, expand macros if flag set.
-	function removeDelimitersAndExpand($string, $inpreamble = FALSE)
+	public function removeDelimitersAndExpand($string, $inpreamble = FALSE)
 	{
 		// only expand the macro if flag set, if strings defined and not in preamble
 		if(!$this->expandMacro || empty($this->strings) || $inpreamble)
@@ -429,10 +429,10 @@ class PARSEENTRIES
                 $line = $possibleEntryStart . $line;
             }
 
-			if (!$inside && strchr($line,"@"))
+			if (!$inside && strchr($line, "@"))
 			{
 				// throw all characters before the '@'
-				$line=strstr($line,'@');
+				$line=strstr($line, '@');
 				if(!strchr($line, "{") && !strchr($line, "(")) {
                     $possibleEntryStart = $line;
                 } elseif(preg_match("/@.*([{(])/U", preg_quote($line), $matches)) {
@@ -448,18 +448,18 @@ class PARSEENTRIES
 			if ($inside)
 			{
 				$entry .= " ".$line;
-				if ($j=$this->closingDelimiter($entry,$delimitEnd))
+				if ($j=$this->closingDelimiter($entry, $delimitEnd))
 				{
 					// all characters after the delimiter are thrown but the remaining 
 					// characters must be kept since they may start the next entry !!!
-					$lastLine = substr($entry,$j+1);
-					$entry = substr($entry,0,$j+1);
+					$lastLine = substr($entry, $j+1);
+					$entry = substr($entry, 0, $j+1);
 					// Strip excess whitespaces from the entry
                     // B. Geißler 03.03.2013
                     // changed preg_replace to avoid troubles with à
 					$entry = preg_replace('/{[ \t]+}/', ' ', $entry);
 					$this->parseEntry($entry);
-					$entry = strchr($lastLine,"@");
+					$entry = strchr($lastLine, "@");
 					if ($entry) 
 						$inside = TRUE;
 					else 
@@ -470,7 +470,7 @@ class PARSEENTRIES
 	}
 
 // Return arrays of entries etc. to the calling process.
-	function returnArrays()
+	public function returnArrays()
 	{
 		foreach($this->preamble as $value)
 		{
@@ -486,7 +486,7 @@ class PARSEENTRIES
 			$strings = $this->strings; 
 			// $this->strings is initialized with strings provided by user if they exists
 			// it is supposed that there are no substitutions to be made in the user strings, i.e., no # 
-			$this->strings = isset($this->userStrings) ? $this->userStrings : array() ; 
+			$this->strings = $this->userStrings ?? [] ; 
 			foreach($strings as $value) 
 			{
 				// changed 21/08/2004 G. Gardey
@@ -521,6 +521,6 @@ class PARSEENTRIES
 //			$this->strings = FALSE;
 //		if(empty($this->entries))
 //			$this->entries = FALSE;
-		return array($this->preamble, $this->strings, $this->entries, $this->undefinedStrings);
+		return [$this->preamble, $this->strings, $this->entries, $this->undefinedStrings];
 	}
 }
