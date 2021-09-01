@@ -106,7 +106,7 @@ class EntryTest extends TestCase
      */
     public function testGetAccessed()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Dates', $this->object->getAccessed());
+        $this->assertInstanceOf(Dates::class, $this->object->getAccessed());
     }
 
     /**
@@ -169,7 +169,7 @@ class EntryTest extends TestCase
      */
     public function testGetAuthor()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getAuthor());
+        $this->assertInstanceOf(Persons::class, $this->object->getAuthor());
     }
 
     /**
@@ -221,7 +221,7 @@ class EntryTest extends TestCase
      */
     public function testGetCollectionEditor()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getCollectionEditor());
+        $this->assertInstanceOf(Persons::class, $this->object->getCollectionEditor());
     }
 
     /**
@@ -251,7 +251,7 @@ class EntryTest extends TestCase
      */
     public function testGetComposer()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getComposer());
+        $this->assertInstanceOf(Persons::class, $this->object->getComposer());
     }
 
     /**
@@ -259,7 +259,7 @@ class EntryTest extends TestCase
      */
     public function testGetContainerAuthor()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getContainerAuthor());
+        $this->assertInstanceOf(Persons::class, $this->object->getContainerAuthor());
     }
 
     /**
@@ -311,7 +311,7 @@ class EntryTest extends TestCase
      */
     public function testGetDirector()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getDirector());
+        $this->assertInstanceOf(Persons::class, $this->object->getDirector());
     }
 
     /**
@@ -341,7 +341,7 @@ class EntryTest extends TestCase
      */
     public function testGetEditor()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getEditor());
+        $this->assertInstanceOf(Persons::class, $this->object->getEditor());
     }
 
     /**
@@ -349,7 +349,7 @@ class EntryTest extends TestCase
      */
     public function testGetEditorialDirector()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getEditorialDirector());
+        $this->assertInstanceOf(Persons::class, $this->object->getEditorialDirector());
     }
 
     /**
@@ -368,7 +368,7 @@ class EntryTest extends TestCase
      */
     public function testGetEventDate()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Dates', $this->object->getEventDate());
+        $this->assertInstanceOf(Dates::class, $this->object->getEventDate());
     }
 
     /**
@@ -409,7 +409,7 @@ class EntryTest extends TestCase
      */
     public function testGetIllustrator()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getIllustrator());
+        $this->assertInstanceOf(Persons::class, $this->object->getIllustrator());
     }
 
     /**
@@ -417,7 +417,7 @@ class EntryTest extends TestCase
      */
     public function testGetInterviewer()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getInterviewer());
+        $this->assertInstanceOf(Persons::class, $this->object->getInterviewer());
     }
 
     /**
@@ -436,7 +436,7 @@ class EntryTest extends TestCase
      */
     public function testGetIssued()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Dates', $this->object->getIssued());
+        $this->assertInstanceOf(Dates::class, $this->object->getIssued());
     }
 
     /**
@@ -557,7 +557,7 @@ class EntryTest extends TestCase
      */
     public function testGetOriginalAuthor()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getOriginalAuthor());
+        $this->assertInstanceOf(Persons::class, $this->object->getOriginalAuthor());
     }
 
     /**
@@ -565,7 +565,7 @@ class EntryTest extends TestCase
      */
     public function testGetOriginalDate()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Dates', $this->object->getOriginalDate());
+        $this->assertInstanceOf(Dates::class, $this->object->getOriginalDate());
     }
 
     /**
@@ -617,7 +617,7 @@ class EntryTest extends TestCase
      */
     public function testGetPages()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Pages', $this->object->getPages());
+        $this->assertInstanceOf(Pages::class, $this->object->getPages());
     }
 
     /**
@@ -658,7 +658,7 @@ class EntryTest extends TestCase
      */
     public function testGetRecipient()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getRecipient());
+        $this->assertInstanceOf(Persons::class, $this->object->getRecipient());
     }
 
     /**
@@ -677,7 +677,7 @@ class EntryTest extends TestCase
      */
     public function testGetReviewedAuthor()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getReviewedAuthor());
+        $this->assertInstanceOf(Persons::class, $this->object->getReviewedAuthor());
     }
 
     /**
@@ -751,7 +751,7 @@ class EntryTest extends TestCase
      */
     public function testGetSubmitted()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Dates', $this->object->getSubmitted());
+        $this->assertInstanceOf(Dates::class, $this->object->getSubmitted());
     }
 
     /**
@@ -792,7 +792,7 @@ class EntryTest extends TestCase
      */
     public function testGetTranslator()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->getTranslator());
+        $this->assertInstanceOf(Persons::class, $this->object->getTranslator());
 
     }
 
@@ -801,7 +801,7 @@ class EntryTest extends TestCase
      */
     public function testGetType()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Type', $this->object->getType());
+        $this->assertInstanceOf(Type::class, $this->object->getType());
     }
 
     /**

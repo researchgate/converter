@@ -1,6 +1,8 @@
 <?php
+
 namespace Geissler\Converter;
 
+use Geissler\Converter\Standard\Basic\StandardAbstract;
 use Geissler\Converter\Standard\BibTeX\BibTeX;
 use Geissler\Converter\Standard\CSL\CSL;
 use Geissler\Converter\Standard\RIS\RIS;
@@ -11,6 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ConverterTest extends TestCase
 {
+
     /**
      * @var Converter
      */
@@ -26,12 +29,13 @@ class ConverterTest extends TestCase
     }
 
     /**
-     * @covers Geissler\Converter\Converter::convert
+     * @covers       \Geissler\Converter\Converter::convert
      * @dataProvider dataProviderForConvert
      */
-    public function testConvert($from, $to, $output)
+    public function testConvert(StandardAbstract $from, StandardAbstract $to, string $expected): void
     {
-        $this->assertEquals($output, $this->object->convert($from, $to));
+        $actual = $this->object->convert($from, $to);
+        $this->assertEquals($expected, $actual);
     }
 
     public function dataProviderForConvert()
@@ -71,41 +75,71 @@ class ConverterTest extends TestCase
       }]'
                 ),
                 new BibTeX(),
-                '@article{article,
-author = {Wallace-Hadrill, Andrew and Zanker, Paul and Boschung, Dieter},
-year = {2011},
-pages = {121-160},
-title = {The monumental centre of Herculaneum. In search of the identities of the public buildings},
-booktitle = {Journal of Roman archaeology}
-}',
+                <<<EXPECTED
+                @article{article,\r
+                author = {Wallace-Hadrill, Andrew and Zanker, Paul and Boschung, Dieter},\r
+                year = {2011},\r
+                pages = {121-160},\r
+                title = {The monumental centre of Herculaneum. In search of the identities of the public buildings},\r
+                booktitle = {Journal of Roman archaeology}\r
+                }
+                EXPECTED
+                ,
             ],
             [
-                new RIS('TY  - JOUR
-TI  - Die Grundlage der allgemeinen Relativitätstheorie
-AU  - Einstein, Albert
-PY  - 1916
-SP  - 769
-EP  - 822
-JO  - Annalen der Physik
-VL  - 49
-ER  - '),
+                new RIS(
+                    <<<RIS
+                        TY  - JOUR\r
+                        TI  - Die Grundlage der allgemeinen Relativitätstheorie\r
+                        AU  - Einstein, Albert\r
+                        PY  - 1916\r
+                        SP  - 769\r
+                        EP  - 822\r
+                        JO  - Annalen der Physik\r
+                        VL  - 49\r
+                        ER  - \r
+                        RIS
+                ),
                 new BibTeX(),
-                '@article{article,
-author = {Einstein, Albert},
-year = {1916},
-pages = {769-822},
-title = {Die Grundlage der allgemeinen Relativitätstheorie},
-volume = {49}
-}',
+                <<<EXPECTED
+                    @article{article,\r
+                    author = {Einstein, Albert},\r
+                    year = {1916},\r
+                    pages = {769-822},\r
+                    title = {Die Grundlage der allgemeinen Relativitätstheorie},\r
+                    volume = {49}\r
+                    }
+                    EXPECTED
+                ,
             ],
             [
-                new BibTeX('@article{article,
-author = {Einstein, Albert},
-year = {1916},
-pages = {769-822},
-title = {Die Grundlage der allgemeinen Relativitätstheorie},
-volume = {49}
-}'),
+                new BibTeX(
+                    <<<BIBTEX
+                    @article{article,\r
+                    author = {Einstein, Albert},\r
+                    year = {1916},\r
+                    pages = {769-822},\r
+                    title = {Die Grundlage der allgemeinen Relativitätstheorie},\r
+                    volume = {49}\r
+                    }
+                    BIBTEX
+                ),
+                new CSL(),
+                '[{"type":"article","author":[{"family":"Einstein","given":"Albert"}],"issued":[{"year":"1916"}],"page":"769-822","page-first":"769","citation-label":"article","title":"Die Grundlage der allgemeinen Relativit\u00e4tstheorie"}]',
+            ],
+            [
+                new BibTeX(
+                    <<<BIXTEX
+                    @article{article,
+                    author = {Einstein, Albert},
+                    year = {1916},
+                    pages = {769-822},
+                    title = {Die Grundlage der allgemeinen Relativitätstheorie},
+                    volume = {49}
+                    }
+                    BIXTEX
+
+                ),
                 new CSL(),
                 '[{"type":"article","author":[{"family":"Einstein","given":"Albert"}],"issued":[{"year":"1916"}],"page":"769-822","page-first":"769","citation-label":"article","title":"Die Grundlage der allgemeinen Relativit\u00e4tstheorie"}]',
             ],
@@ -113,9 +147,9 @@ volume = {49}
     }
 
     /**
-     * @covers Geissler\Converter\Converter::convert
+     * @covers \Geissler\Converter\Converter::convert
      */
-    public function testDoNotConvert()
+    public function testDoNotConvert(): void
     {
         $this->assertEquals('Error! The data could not be parsed!', $this->object->convert(new BibTeX(), new RIS()));
     }
