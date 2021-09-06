@@ -2,6 +2,7 @@
 namespace Geissler\Converter\Standard\BibTeX;
 
 use ErrorException;
+use Geissler\Converter\Model\Entries;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -35,7 +36,7 @@ class BibTeXTest extends TestCase
     public function testRun($bibTeX, $result)
     {
         $this->assertTrue($this->object->parse($bibTeX));
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->retrieve());
+        $this->assertInstanceOf(Entries::class, $this->object->retrieve());
         $this->assertEquals($result, $this->object->create($this->object->retrieve()));
     }
 
@@ -89,7 +90,7 @@ booktitle = {The title of the book}
     public function testDoNotRun()
     {
         $this->assertFalse($this->object->parse());
-        $this->assertEquals('', $this->object->create(new \Geissler\Converter\Model\Entries()));
+        $this->assertEquals('', $this->object->create(new Entries()));
         $this->expectException(ErrorException::class);
         $this->object->retrieve();
     }

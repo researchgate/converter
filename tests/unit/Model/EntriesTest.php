@@ -29,7 +29,7 @@ class EntriesTest extends TestCase
      */
     public function testSetEntry()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->setEntry(new Entry()));
+        $this->assertInstanceOf(Entries::class, $this->object->setEntry(new Entry()));
     }
 
     /**
@@ -37,12 +37,12 @@ class EntriesTest extends TestCase
      */
     public function testGetIterator()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->setEntry(new Entry()));
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->setEntry(new Entry()));
-        $this->assertInstanceOf('\ArrayIterator', $this->object->getIterator());
+        $this->assertInstanceOf(Entries::class, $this->object->setEntry(new Entry()));
+        $this->assertInstanceOf(Entries::class, $this->object->setEntry(new Entry()));
+        $this->assertInstanceOf(\ArrayIterator::class, $this->object->getIterator());
 
         foreach ($this->object as $child) {
-            $this->assertInstanceOf('\Geissler\Converter\Model\Entry', $child);
+            $this->assertInstanceOf(Entry::class, $child);
         }
     }
 
@@ -59,8 +59,8 @@ class EntriesTest extends TestCase
         $this->object[0]    =   new Entry();
         $this->object[]     =   new Entry();
         $this->assertTrue(isset($this->object[1]));
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entry', $this->object[0]);
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entry', $this->object[1]);
+        $this->assertInstanceOf(Entry::class, $this->object[0]);
+        $this->assertInstanceOf(Entry::class, $this->object[1]);
         unset($this->object[1]);
         $this->assertFalse(isset($this->object[1]));
     }

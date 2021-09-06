@@ -1,6 +1,7 @@
 <?php
 namespace Geissler\Converter\Standard\CSL;
 
+use Geissler\Converter\Model\Entries;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -36,7 +37,7 @@ class CSLTest extends TestCase
     public function testParse($input)
     {
         $this->assertTrue($this->object->parse($input));
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->retrieve());
+        $this->assertInstanceOf(Entries::class, $this->object->retrieve());
         $this->assertIsArray(json_decode($this->object->create($this->object->retrieve())));
     }
 

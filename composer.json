@@ -49,5 +49,10 @@
             "library/bibtexParse/PARSEMONTH.php",
             "library/bibtexParse/PARSEPAGE.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Geissler\\Converter\\": "tests/unit"
+        }
     }
 }

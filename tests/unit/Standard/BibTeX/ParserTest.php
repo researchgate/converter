@@ -2,6 +2,11 @@
 namespace Geissler\Converter\Standard\BibTeX;
 
 use ErrorException;
+use Geissler\Converter\Model\Date;
+use Geissler\Converter\Model\Entries;
+use Geissler\Converter\Model\Entry;
+use Geissler\Converter\Model\Person;
+use IteratorAggregate;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -37,24 +42,24 @@ class ParserTest extends TestCase
     public function testParseOne($bibTeX, $lastName, $title, $type, $year)
     {
         $this->assertTrue($this->object->parse($bibTeX));
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->retrieve());
+        $this->assertInstanceOf(Entries::class, $this->object->retrieve());
         $entries    =   $this->object->retrieve();
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entry', $entries[0]);
-        /** @var $entry \Geissler\Converter\Model\Entry */
+        $this->assertInstanceOf(Entry::class, $entries[0]);
+        /** @var $entry Entry */
         $entry      =   $entries[0];
 
         foreach ($entry->getAuthor() as $author) {
-            /** @var $author \Geissler\Converter\Model\Person */
-            $this->assertInstanceOf('\Geissler\Converter\Model\Person', $author);
+            /** @var $author Person */
+            $this->assertInstanceOf(Person::class, $author);
             $this->assertEquals($lastName, $author->getFamily());
         }
 
         $this->assertEquals($title, $entry->getTitle());
         $this->assertEquals($type, $entry->getType()->getType());
 
-        $this->assertInstanceOf('\IteratorAggregate', $entry->getIssued());
+        $this->assertInstanceOf(IteratorAggregate::class, $entry->getIssued());
         foreach ($entry->getIssued() as $issued) {
-            /** @var $issued \Geissler\Converter\Model\Date */
+            /** @var $issued Date */
             $this->assertEquals($year, $issued->getYear());
         }
     }
@@ -132,12 +137,12 @@ class ParserTest extends TestCase
     {
         $this->assertTrue($this->object->parse($bibTeX));
         $entries    =   $this->object->retrieve();
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $entries);
+        $this->assertInstanceOf(Entries::class, $entries);
 
         $position   =   0;
         foreach ($entries as $entry) {
-            /** @var $entry \Geissler\Converter\Model\Entry */
-            $this->assertInstanceOf('\Geissler\Converter\Model\Entry', $entry);
+            /** @var $entry Entry */
+            $this->assertInstanceOf(Entry::class, $entry);
             $this->assertEquals($titles[$position], $entry->getTitle());
             $this->assertEquals($types[$position], $entry->getType()->getType());
             $position++;
@@ -314,10 +319,10 @@ class ParserTest extends TestCase
                 }';
         $this->assertTrue($this->object->parse($input));
         $entries    =   $this->object->retrieve();
-        /** @var $entry \Geissler\Converter\Model\Entry */
+        /** @var $entry Entry */
         $entry  =   $entries[0];
         $dates  =   $entry->getIssued();
-        /** @var $date \Geissler\Converter\Model\Date */
+        /** @var $date Date */
         $date   =   $dates[0];
         $this->assertEquals('1', $date->getMonth());
         $this->assertEquals('8', $date->getDay());

@@ -28,6 +28,6 @@ class DatesTest extends TestCase
      */
     public function testSetDate()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Dates', $this->object->setDate(new Date()));
+        $this->assertInstanceOf(Dates::class, $this->object->setDate(new Date()));
     }
 }

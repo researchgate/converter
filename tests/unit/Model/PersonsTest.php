@@ -28,7 +28,7 @@ class PersonsTest extends TestCase
      */
     public function testSetPerson()
     {
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->setPerson(new Person()));
+        $this->assertInstanceOf(Persons::class, $this->object->setPerson(new Person()));
     }
 
     /**
@@ -36,12 +36,12 @@ class PersonsTest extends TestCase
      */
     public function testGetIterator()
     {
-        $this->assertInstanceOf('\ArrayIterator', $this->object->getIterator());
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->setPerson(new Person()));
-        $this->assertInstanceOf('\Geissler\Converter\Model\Persons', $this->object->setPerson(new Person()));
+        $this->assertInstanceOf(\ArrayIterator::class, $this->object->getIterator());
+        $this->assertInstanceOf(Persons::class, $this->object->setPerson(new Person()));
+        $this->assertInstanceOf(Persons::class, $this->object->setPerson(new Person()));
 
         foreach ($this->object as $person) {
-            $this->assertInstanceOf('\Geissler\Converter\Model\Person', $person);
+            $this->assertInstanceOf(Person::class, $person);
         }
     }
 }

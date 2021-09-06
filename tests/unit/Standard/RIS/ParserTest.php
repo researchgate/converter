@@ -2,6 +2,9 @@
 namespace Geissler\Converter\Standard\RIS;
 
 use ErrorException;
+use Geissler\Converter\Model\Entries;
+use Geissler\Converter\Model\Entry;
+use Geissler\Converter\Model\Person;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,17 +37,17 @@ class ParserTest extends TestCase
     public function testParse($data)
     {
         $this->assertTrue($this->object->parse($data['input']));
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->retrieve());
+        $this->assertInstanceOf(Entries::class, $this->object->retrieve());
         $entries    =   $this->object->retrieve();
 
         foreach ($entries as $entry) {
-            /** @var $entry \Geissler\Converter\Model\Entry */
+            /** @var $entry Entry */
             $this->assertEquals($data['title'], $entry->getTitle());
             $this->assertEquals($data['type'], $entry->getType()->getType());
 
             $count  =   0;
             foreach ($entry->getAuthor() as $author) {
-                /** @var $author \Geissler\Converter\Model\Person */
+                /** @var $author Person */
                 $this->assertEquals($data['authors'][$count]['family'], $author->getFamily());
                 $this->assertEquals($data['authors'][$count]['given'], $author->getGiven());
                 $count++;
@@ -53,7 +56,7 @@ class ParserTest extends TestCase
             if (isset($data['editors']) == true) {
                 $count  =   0;
                 foreach ($entry->getEditor() as $editor) {
-                    /** @var $editor \Geissler\Converter\Model\Person */
+                    /** @var $editor Person */
                     $this->assertEquals($data['editors'][$count]['family'], $editor->getFamily());
                     $this->assertEquals($data['editors'][$count]['given'], $editor->getGiven());
                     $count++;
@@ -278,16 +281,16 @@ ER  - ',
     public function testParseMultiple($input, array $title, array $type, array $authors, array $keywords)
     {
         $this->assertTrue($this->object->parse($input));
-        $this->assertInstanceOf('\Geissler\Converter\Model\Entries', $this->object->retrieve());
+        $this->assertInstanceOf(Entries::class, $this->object->retrieve());
         $entries    =   $this->object->retrieve();
         $position   =   0;
 
         foreach ($entries as $entry) {
-            /** @var $entry \Geissler\Converter\Model\Entry */
+            /** @var $entry Entry */
             $this->assertEquals($title[$position], $entry->getTitle());
             $this->assertEquals($type[$position], $entry->getType()->getType());
             $persons    =   $entry->getAuthor();
-            /** @var $author \Geissler\Converter\Model\Person */
+            /** @var $author Person */
             $author     =   $persons[0];
             $this->assertEquals($authors[$position], $author->getFamily());
             $this->assertEquals($keywords[$position], $entry->getKeyword());
@@ -358,7 +361,7 @@ ER  - ',
         $entries    =   $this->object->retrieve();
         $position   =   0;
         foreach ($entries as $entry) {
-            /** @var $entry \Geissler\Converter\Model\Entry */
+            /** @var $entry Entry */
             $this->assertEquals($type[$position++], $entry->getType()->getType());
         }
     }
