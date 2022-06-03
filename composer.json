@@ -28,7 +28,7 @@
         }
     ],
     "require": {
-        "php": ">=7.3.0",
+        "php": "^7.4 | ^8.0",
         "ext-json": "*",
         "researchgate/libris": "^2.1.1"
     },
