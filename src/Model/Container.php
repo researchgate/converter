@@ -2,6 +2,7 @@
 
 namespace Geissler\Converter\Model;
 
+use ReturnTypeWillChange;
 use Geissler\Converter\Model\Entry;
 
 /**
@@ -23,14 +24,7 @@ abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
         $this->data =   [];
     }
 
-    /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Retrieve an external iterator
-     * @link http://php.net/manual/en/iteratoraggregate.getiterator.php
-     * @return \Traversable An instance of an object implementing <b>Iterator</b> or
-     * <b>Traversable</b>
-     */
-    public function getIterator()
+    public function getIterator(): \ArrayIterator
     {
         return new \ArrayIterator($this->data);
     }
@@ -47,7 +41,7 @@ abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
      * <p>
      * The return value will be casted to boolean if non-boolean was returned.
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->data[$offset]);
     }
@@ -61,6 +55,7 @@ abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
      * </p>
      * @return mixed Can return all value types.
      */
+    #[ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->data[$offset] ?? null;
@@ -80,7 +75,7 @@ abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
      * @throws \ErrorException
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_object($value) == false) {
             throw new \ErrorException('Only objects are allowed!');
@@ -102,7 +97,7 @@ abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
      * </p>
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->data[$offset]);
     }
@@ -117,7 +112,7 @@ abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
      * <p>
      *       The return value is cast to an integer.
      */
-    public function count()
+    public function count(): int
     {
         return count($this->data);
     }
