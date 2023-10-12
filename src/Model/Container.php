@@ -3,13 +3,15 @@
 namespace Geissler\Converter\Model;
 
 use ReturnTypeWillChange;
-use Geissler\Converter\Model\Entry;
 
 /**
  * Abstract container to access groups of objects as "array"-object.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @license MIT
+ *
+ * @template-implements \IteratorAggregate<int, mixed>
+ * @template-implements \ArrayAccess<int, mixed>
  */
 abstract class Container implements \IteratorAggregate, \ArrayAccess, \Countable
 {
