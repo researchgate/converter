@@ -950,7 +950,7 @@ class Entry
      * @param $issue
      * @return Entry
      */
-    public function setIssue($issue)
+    public function setIssue(string $issue)
     {
         $this->issue = $issue;
         return $this;
@@ -1582,7 +1582,7 @@ class Entry
      * @param $title
      * @return Entry
      */
-    public function setTitle($title)
+    public function setTitle(string $title)
     {
         $this->title = $title;
         return $this;
@@ -1690,7 +1690,7 @@ class Entry
      * @param $volume
      * @return Entry
      */
-    public function setVolume($volume)
+    public function setVolume(string $volume)
     {
         $this->volume = $volume;
         return $this;
