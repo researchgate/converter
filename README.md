@@ -1,6 +1,6 @@
 ## Converter
 
-[![Build Status](https://github.com/researchgate/converter/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/researchgate/converter/actions/workflows/ci.yaml)
+[![ci](https://github.com/researchgate/converter/actions/workflows/ci.yaml/badge.svg)](https://github.com/researchgate/converter/actions/workflows/ci.yaml)
 
 **Forked from [geissler/converter](https://github.com/geissler/converter).** Thank you for your amazing contributions 🙏.
 
